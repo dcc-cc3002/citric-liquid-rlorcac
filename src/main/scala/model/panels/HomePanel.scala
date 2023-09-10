@@ -5,9 +5,9 @@ import model.entities.PlayerCharacter
 
 /** Represents a panel that's home to a `PlayerCharacter`, where they can Norma Clear
  *
- * @param atHome The PlayerCharacter that has this panel set as their HomePanel
+ * @param owner The PlayerCharacter that has this panel set as their HomePanel
  */
-class HomePanel(val atHome: PlayerCharacter) extends AbstractPanel{
+class HomePanel(val owner: PlayerCharacter) extends AbstractPanel{
   /** To be called when a `PlayerCharacter` lands on a `Panel`
    *
    * @param player The `PlayerCharacter` that landed on the `Panel`
@@ -16,7 +16,7 @@ class HomePanel(val atHome: PlayerCharacter) extends AbstractPanel{
     /** Check if player can perform a normaClear
      *
      */
-    if(player == atHome){
+    if(player == owner){
       // Here goes NormaClear logic
     }
   }
