@@ -1,7 +1,8 @@
 package cl.uchile.dcc.citric
-package model.panels
+package model.panels.panelKinds
 
 import model.entities.PlayerCharacter
+import model.panels.AbstractPanel
 
 /** Represents a panel that's home to a `PlayerCharacter`, where they can Norma Clear
  *

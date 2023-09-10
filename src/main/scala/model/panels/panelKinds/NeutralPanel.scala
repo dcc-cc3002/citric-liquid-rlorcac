@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
-package model.panels
+package model.panels.panelKinds
+
 import model.entities.PlayerCharacter
+import model.panels.AbstractPanel
 
 class NeutralPanel extends AbstractPanel {
   /** To be called when a `PlayerCharacter` lands on a `Panel`
