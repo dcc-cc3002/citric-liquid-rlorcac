@@ -12,6 +12,6 @@ class EncounterPanel extends AbstractPanel {
    */
   def activate(player: PlayerCharacter): Unit = {
     var wildUnit = new Randomize().randomUnit()
-    // TODO: Combat goes here
+    // TODO: Combat goes here.
   }
 }
