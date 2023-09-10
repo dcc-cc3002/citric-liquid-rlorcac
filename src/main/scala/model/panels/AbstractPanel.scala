@@ -12,6 +12,7 @@ abstract class AbstractPanel extends Panel{
   var nextPanels: ArrayBuffer[Panel] = new ArrayBuffer[Panel]
   def addCharacter(player: PlayerCharacter): Unit = {
     characters.append(player)
+    activate(player)
   }
 
   def removeCharacter(player: PlayerCharacter): Unit = {
