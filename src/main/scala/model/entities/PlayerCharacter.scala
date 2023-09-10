@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model
+package model.entities
 
 import scala.util.Random
 
@@ -38,11 +38,11 @@ import scala.util.Random
   * @author [[https://github.com/rlorcac/ Raimundo Lorca C.]]
   */
 class PlayerCharacter(val name: String,
-              val maxHp: Int,
-              val attack: Int,
-              val defense: Int,
-              val evasion: Int,
-              val randomNumberGenerator: Random = new Random()) {
+              maxHp: Int,
+              attack: Int,
+              defense: Int,
+              evasion: Int,
+              val randomNumberGenerator: Random = new Random()) extends AbstractEntity(maxHp, attack, defense, evasion) {
 
   /** Rolls a dice and returns a value between 1 to 6. */
   def rollDice(): Int = {
