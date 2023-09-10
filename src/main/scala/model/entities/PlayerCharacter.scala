@@ -43,8 +43,11 @@ class PlayerCharacter(val name: String,
               defense: Int,
               evasion: Int,
               val randomNumberGenerator: Random = new Random()) extends AbstractEntity(maxHp, attack, defense, evasion) {
-  var stars = 0
-  private var norma = 1
+  var stars: Int = 0
+  private var norma: Int = 1
+  var victorias: Int = 0
+  var alive: Boolean = true
+  var goal: (String, Int) = new Tuple2[String, Int]()
 
   /** Rolls a dice and returns a value between 1 to 6. */
   def rollDice(): Int = {
@@ -59,5 +62,28 @@ class PlayerCharacter(val name: String,
   }
 
   def getNorma: Int = norma
+
+  /** Handles logic for checking if Norma Clear can be executed
+   *
+   */
+  def normaCheck(): Unit = {
+    var conditionIsStars: Boolean = goal[0]
+    var goalCount: Int = goal[1]
+  }
+
+  /** Invoked only if the player can Norma Clear, increments `norma` by 1 and asks to set goal for next Norma level.
+   *
+   */
+  def normaClear(): Unit = {
+    norma += 1
+    setGoal()
+  }
+
+  /** Asks the player to choose a goal for next Norma level.
+   *
+   */
+  private def setGoal(): Unit = {
+
+  }
 
 }
