@@ -43,9 +43,17 @@ class PlayerCharacter(val name: String,
               defense: Int,
               evasion: Int,
               val randomNumberGenerator: Random = new Random()) extends AbstractEntity(maxHp, attack, defense, evasion) {
+  var stars = 0
 
   /** Rolls a dice and returns a value between 1 to 6. */
   def rollDice(): Int = {
     randomNumberGenerator.nextInt(6) + 1
+  }
+
+  /** Called when the unit starts its turn
+   *
+   */
+  def startTurn(): Unit = {
+
   }
 }
