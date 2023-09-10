@@ -48,4 +48,10 @@ trait Panel {
     * @param player The player character to remove from this panel.
     */
   def removeCharacter(player: PlayerCharacter): Unit
+
+  /** To be called when a `PlayerCharacter` lands on a `Panel`
+   *
+   * @param player The `PlayerCharacter` that landed on the `Panel`
+   */
+  def activate(player: PlayerCharacter): Unit
 }
