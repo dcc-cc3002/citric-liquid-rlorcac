@@ -7,7 +7,7 @@ import scala.collection.mutable.ArrayBuffer
 /** Implements general
  *
  */
-abstract class AbstractPanel() extends Panel{
+abstract class AbstractPanel extends Panel{
   val characters: ArrayBuffer[PlayerCharacter] = new ArrayBuffer[PlayerCharacter]
   var nextPanels: ArrayBuffer[Panel] = new ArrayBuffer[Panel]
   def addCharacter(player: PlayerCharacter): Unit = {
