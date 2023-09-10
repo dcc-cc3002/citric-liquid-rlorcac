@@ -1,7 +1,8 @@
 package cl.uchile.dcc.citric
 package model.randomizer
 
-import model.entities.{AbstractEntity, RoboBall, WildUnit, Seagull, Chicken}
+import model.entities.{AbstractEntity, WildUnit}
+import cl.uchile.dcc.citric.model.entities.defaultEntities.{Chicken, RoboBall, Seagull}
 
 import cl.uchile.dcc.citric.model.panels.panelKinds.{BonusPanel, DropPanel, EncounterPanel, NeutralPanel}
 import cl.uchile.dcc.citric.model.panels.Panel
