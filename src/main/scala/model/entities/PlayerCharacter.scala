@@ -69,8 +69,8 @@ class PlayerCharacter(val name: String,
    */
   def normaCheck(): Unit = {
     var normaMap: Map[String, Int] = Map[String, Int]("Victories" -> victories, "Stars" -> stars)
-    var goalCount: Int = goal[1]
-    if(normaMap(goal[0]) >= goalCount){
+    var goalCount: Int = goal._2
+    if(normaMap(goal._1) >= goalCount){
       normaClear()
     }
   }
