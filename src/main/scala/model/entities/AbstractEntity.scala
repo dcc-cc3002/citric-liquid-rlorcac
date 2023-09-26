@@ -13,7 +13,7 @@ abstract class AbstractEntity(val maxHp: Int,
    *
    * @param amount The amount of stars to add
    */
-  def addStars(amount): Unit = {
+  def addStars(amount: Int): Unit = {
     stars = stars + amount
   }
 }
