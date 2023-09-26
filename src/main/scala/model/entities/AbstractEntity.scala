@@ -8,20 +8,30 @@ abstract class AbstractEntity(val maxHp: Int,
                               protected var stars: Int) extends Entity {
   protected var currentHp: Int = maxHp
   def getCurrentHp: Int = currentHp
+  def getStars: Int = stars
 
-  /** Adds stars to the given `Entity`'s counter
-   *
-   * @param amount The amount of stars to add
-   */
-  def addStars(amount: Int): Unit = {
+  def addStars(amount: Int): Int = {
+    val originalStars: Int = stars
     stars = stars + amount
+    stars - originalStars
   }
 
-  /** Safely takes away stars from the given `Entity`'s counter until 0 is reached
-   *
-   * @param amount The amount of stars to take away
-   */
-  def deductStars(amount: Int): Unit = {
+  def addHp(dHp:  Int): Int = {
+    val originalHp = currentHp
+    currentHp = maxHp.min(currentHp + dHp)
+    currentHp - originalHp
+  }
+
+
+  def deductStars(amount: Int): Int = {
+    val originalStars: Int = stars
     stars = 0.max(stars - amount)
+    originalStars - stars
+  }
+
+  def deductHp(dHp: Int): Int = {
+    val originalHp: Int = currentHp
+    currentHp = 0.max(currentHp - dHp)
+    originalHp - currentHp
   }
 }

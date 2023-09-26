@@ -56,14 +56,6 @@ class PlayerCharacter(val name: String,
     randomNumberGenerator.nextInt(6) + 1
   }
 
-  /** Adds HP up to `PlayerCharacter.maxHp`
-   *
-   * @param dHp Max amount of HP to add
-   */
-  def addHp(dHp: Int): Unit = {
-    currentHp = maxHp.min(currentHp + dHp)
-  }
-
   /** Adds victories to the `PlayerCharacter`'s counter
    *
    * @param amount The amount of victories to add
