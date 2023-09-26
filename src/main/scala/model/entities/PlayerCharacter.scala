@@ -69,7 +69,7 @@ class PlayerCharacter(val name: String,
    *
    */
   def startTurn(): Unit = {
-    if (this.currentHp < 0) {
+    if (currentHp < 0) {
       throw new InvalidStatException("HP can not be lower than 0")
     }
     else if (currentHp > maxHp) {
