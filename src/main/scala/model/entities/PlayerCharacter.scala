@@ -82,8 +82,16 @@ class PlayerCharacter(val name: String,
     }
   }
 
+  /**
+   *
+   * @return The current norma level for the `PlayerCharacter`
+   */
   def getNorma: Int = norma
 
+  /**
+   *
+   * @return The current count of victories for the `PlayerCharacter`
+   */
   def getVictories: Int = victories
 
   /**
