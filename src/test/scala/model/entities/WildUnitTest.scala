@@ -7,10 +7,6 @@ class WildUnitTest extends munit.FunSuite {
   private var chicken: WildUnit = _
   private var roboBall: WildUnit = _
   private var seagull: WildUnit = _
-  private val maxHp = 10
-  private val attack = 1
-  private val defense = 1
-  private val evasion = 1
   override def beforeEach(context: BeforeEach): Unit = {
     chicken = new Chicken()
     roboBall = new RoboBall()
