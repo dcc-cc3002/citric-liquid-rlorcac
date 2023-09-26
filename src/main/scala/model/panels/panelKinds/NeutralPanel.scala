@@ -11,5 +11,5 @@ class NeutralPanel extends AbstractPanel {
    *
    * @param player The `PlayerCharacter` that landed on the `Panel`
    */
-  def activate(player: PlayerCharacter): Unit = println("Absolutely nothing happened")
+  def activate(player: PlayerCharacter): Unit = {}
 }
