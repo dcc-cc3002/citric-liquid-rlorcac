@@ -104,7 +104,7 @@ class PlayerCharacter(val name: String,
    *
    */
   def normaCheck(): Unit = {
-    val normaMap: Map[String, Int] = Map[String, Int]("Victories" -> victories, "Stars" -> stars)
+    val normaMap: Map[String, Int] = Map[String, Int]("Victories" -> getVictories, "Stars" -> getStars)
     val goalCount: Int = goal._2
     if(normaMap(goal._1) >= goalCount){
       normaClear()
@@ -115,7 +115,7 @@ class PlayerCharacter(val name: String,
    *
    */
   private def normaClear(): Unit = {
-    norma += 1
+    norma = norma + 1
     setGoal()
   }
 
