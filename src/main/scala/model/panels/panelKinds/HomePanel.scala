@@ -18,8 +18,6 @@ class HomePanel(val owner: PlayerCharacter) extends AbstractPanel{
      *
      */
     player.addHp(1)
-    if(player == owner){
-      player.normaCheck()
-    }
+    player.normaCheck()
   }
 }
