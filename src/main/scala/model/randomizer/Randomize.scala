@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.randomizer
 
-import model.entities.{AbstractEntity, WildUnit}
+import model.entities.WildUnit
 import cl.uchile.dcc.citric.model.entities.defaultEntities.{Chicken, RoboBall, Seagull}
 
 import cl.uchile.dcc.citric.model.panels.panelKinds.{BonusPanel, DropPanel, EncounterPanel, NeutralPanel}
@@ -12,24 +12,30 @@ import scala.util.Random
 /** Handles randomness while choosing types of `Panel`s, `WildUnit`s, etc.
  *
  */
-class Randomize {
-  private var rng = new Random()
-
+class Randomize(private val rng: Random = new Random()) {
+  private val wildUnitList: List[WildUnit] = List(new RoboBall(), new Seagull(), new Chicken())
+  private val panelList: List[Panel] = List(new BonusPanel(), new DropPanel(), new EncounterPanel(), new NeutralPanel())
   /** Generates a random `WildUnit`
    *
    * @return A new, completely random `WildUnit`. TODO: make it choose from the list of known `WildUnit` types
    */
-  def randomUnit(): WildUnit = {
-    var wildUnitList: List[WildUnit] = List(new RoboBall(), new Seagull(), new Chicken())
-    wildUnitList(rng.nextInt(wildUnitList.length))
-  }
+  def randomUnit(): WildUnit = wildUnitList(rng.nextInt(wildUnitList.length))
 
   /** Generates a random `Panel`
    *
    * @return
    */
-  def randomPanel(): Panel = {
-    var panelList: List[Panel] = List(new BonusPanel(), new DropPanel(), new EncounterPanel(), new NeutralPanel())
-    panelList(rng.nextInt(panelList.length))
-  }
+  def randomPanel(): Panel = panelList(rng.nextInt(panelList.length))
+
+  /**
+   *
+   * @return A list containing all `WildUnit`s this object can return via `randomUnit()`
+   */
+  def getWildUnitList: List[WildUnit] = wildUnitList
+
+  /**
+   *
+   * @return A list containing all `Panel`s this object can return via `randomPanel()`
+   */
+  def getPanelList: List[Panel] = panelList
 }
