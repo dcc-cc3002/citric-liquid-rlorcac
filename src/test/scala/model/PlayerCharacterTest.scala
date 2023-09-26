@@ -83,14 +83,20 @@ class PlayerCharacterTest extends munit.FunSuite {
     assertEquals(character.getStars, 0)
     character.addStars(2)
     assertEquals(character.getStars, 2)
+    character.addStars(-1)
+    assertEquals(character.getStars, 2)
     character.deductStars(5)
+    assertEquals(character.getStars, 0)
+    character.deductStars(-1)
     assertEquals(character.getStars, 0)
   }
 
   test("Victories management") {
     assertEquals(character.getVictories, 0)
     character.addVictories(1)
-    assertEquals(character.getVictories, 0)
+    assertEquals(character.getVictories, 1)
+    character.addVictories(-1)
+    assertEquals(character.getVictories, 1)
   }
 
   test("Norma management"){
