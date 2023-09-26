@@ -68,4 +68,27 @@ class PlayerCharacterTest extends munit.FunSuite {
       assertEquals(character.rollDice(), other.rollDice())
     }
   }
+
+  test("Stars management"){
+    assertEquals(character.getStars, 0)
+    character.addStars(2)
+    assertEquals(character.getStars, 2)
+    character.deductStars(5)
+    assertEquals(character.getStars, 0)
+  }
+
+  test("HP management"){
+    assertEquals(character.getCurrentHp, character.maxHp)
+    character.addHp(1)
+    assertEquals(character.getCurrentHp, character.maxHp)
+    character.deductHp(character.maxHp)
+    assertEquals(character.getCurrentHp, 0)
+    character.deductHp(1)
+    assertEquals(character.getCurrentHp, 0)
+  }
+
+  test("Norma management"){
+    assertEquals(character.getNorma, 1)
+    character.
+  }
 }
