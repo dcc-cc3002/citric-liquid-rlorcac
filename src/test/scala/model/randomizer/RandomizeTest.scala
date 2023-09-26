@@ -18,4 +18,10 @@ class RandomizeTest extends munit.FunSuite {
     }
   }
 
+  test("Generated Panels should be in the allowed list"){
+    for (_ <- 1 to 10) {
+      assert(rand.getPanelList.contains(rand.randomPanel()))
+    }
+  }
+
 }
