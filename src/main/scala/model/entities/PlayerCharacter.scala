@@ -122,8 +122,7 @@ class PlayerCharacter(val name: String,
   /** Asks the player to choose a goal for next Norma level.
    *
    */
-  private def setGoal(): Unit = {
-    val default: (String, Int) = ("Victories", 1)
+  private def setGoal(default: (String, Int) = ("Victories", 1)): Unit = {
     // TODO: Add goal-setting logic.
     goal = default
   }
