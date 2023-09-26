@@ -92,6 +92,14 @@ class PlayerCharacter(val name: String,
 
   def getNorma: Int = norma
 
+  def getVictories: Int = victories
+
+  /**
+   *
+   * @return The `PlayerCharacter`'s next Norma goal in "$amount $type" format
+   */
+  def getGoal: String = goal._2.toString + " " + goal._1
+
   /** Handles logic for checking if Norma Clear can be executed
    *
    */
