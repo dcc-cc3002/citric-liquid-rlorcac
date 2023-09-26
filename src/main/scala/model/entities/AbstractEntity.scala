@@ -16,4 +16,12 @@ abstract class AbstractEntity(val maxHp: Int,
   def addStars(amount: Int): Unit = {
     stars = stars + amount
   }
+
+  /** Safely takes away stars from the given `Entity`'s counter until 0 is reached
+   *
+   * @param amount The amount of stars to take away
+   */
+  def deductStars(amount: Int): Unit = {
+    stars = 0.max(stars - amount)
+  }
 }
