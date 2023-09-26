@@ -71,7 +71,11 @@ class PlayerCharacterTest extends munit.FunSuite {
     assertEquals(character.getCurrentHp, character.maxHp)
     character.addHp(1)
     assertEquals(character.getCurrentHp, character.maxHp)
+    character.addHp(-1)
+    assertEquals(character.getCurrentHp, character.maxHp)
     character.deductHp(character.maxHp)
+    assertEquals(character.getCurrentHp, 0)
+    character.deductHp(-1)
     assertEquals(character.getCurrentHp, 0)
     character.deductHp(1)
     assertEquals(character.getCurrentHp, 0)
@@ -87,6 +91,8 @@ class PlayerCharacterTest extends munit.FunSuite {
     assertEquals(character.getStars, 0)
     character.deductStars(-1)
     assertEquals(character.getStars, 0)
+    character.deductStars(-1)
+    assertEquals(character.getStars, 0)
   }
 
   test("Victories management") {
@@ -99,7 +105,7 @@ class PlayerCharacterTest extends munit.FunSuite {
 
   test("Norma management"){
     assertEquals(character.getNorma, 1)
-    character.setGoal("Stars", 1)
+    character.setGoal(("Stars", 1))
     assertEquals(character.getGoal, "1 Stars")
     assertEquals(character.getStars, 0)
     character.addStars(1)
