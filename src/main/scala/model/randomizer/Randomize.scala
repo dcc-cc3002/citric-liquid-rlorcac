@@ -13,29 +13,27 @@ import scala.util.Random
  *
  */
 class Randomize(private val rng: Random = new Random()) {
-  private val wildUnitList: List[WildUnit] = List(new RoboBall(), new Seagull(), new Chicken())
-  private val panelList: List[Panel] = List(new BonusPanel(), new DropPanel(), new EncounterPanel(), new NeutralPanel())
   /** Generates a random `WildUnit`
    *
-   * @return A new, completely random `WildUnit`. TODO: make it choose from the list of known `WildUnit` types
+   * @return A new, completely random `WildUnit`.
    */
-  def randomUnit(): WildUnit = wildUnitList(rng.nextInt(wildUnitList.length))
+  def randomUnit(): WildUnit = getWildUnitList(rng.nextInt(getWildUnitList.length))
 
   /** Generates a random `Panel`
    *
    * @return
    */
-  def randomPanel(): Panel = panelList(rng.nextInt(panelList.length))
+  def randomPanel(): Panel = getPanelList(rng.nextInt(getPanelList.length))
 
   /**
    *
    * @return A list containing all `WildUnit`s this object can return via `randomUnit()`
    */
-  def getWildUnitList: List[WildUnit] = wildUnitList
+  def getWildUnitList: List[WildUnit] = List(new RoboBall(), new Seagull(), new Chicken())
 
   /**
    *
    * @return A list containing all `Panel`s this object can return via `randomPanel()`
    */
-  def getPanelList: List[Panel] = panelList
+  def getPanelList: List[Panel] = List(new BonusPanel(), new DropPanel(), new EncounterPanel(), new NeutralPanel())
 }
