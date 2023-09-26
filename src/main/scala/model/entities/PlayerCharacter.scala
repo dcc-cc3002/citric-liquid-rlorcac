@@ -64,6 +64,14 @@ class PlayerCharacter(val name: String,
     currentHp = maxHp.min(currentHp + dHp)
   }
 
+  /** Adds victories to the `PlayerCharacter`'s counter
+   *
+   * @param amount The amount of victories to add
+   */
+  def addVictories(amount: Int): Unit = {
+    victories = victories + amount
+  }
+
   /** Called when the unit starts its turn
    *
    */
