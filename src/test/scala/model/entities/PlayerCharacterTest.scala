@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model
+package model.entities
 
 import scala.util.Random
 
@@ -14,7 +14,7 @@ class PlayerCharacterTest extends munit.FunSuite {
   private val attack = 1
   private val defense = 1
   private val evasion = 1
-  private val randomNumberGenerator = new Random(11)
+  private var randomNumberGenerator: Random = _
   /* Add any other constants you need here... */
 
   /*
@@ -28,6 +28,7 @@ class PlayerCharacterTest extends munit.FunSuite {
 
   // This method is executed before each `test(...)` method.
   override def beforeEach(context: BeforeEach): Unit = {
+    randomNumberGenerator = new Random(11)
     character = new PlayerCharacter(
       name,
       maxHp,
@@ -64,5 +65,56 @@ class PlayerCharacterTest extends munit.FunSuite {
     for (_ <- 1 to 10) {
       assertEquals(character.rollDice(), other.rollDice())
     }
+  }
+
+  test("HP management") {
+    assertEquals(character.getCurrentHp, character.maxHp)
+    character.addHp(1)
+    assertEquals(character.getCurrentHp, character.maxHp)
+    character.addHp(-1)
+    assertEquals(character.getCurrentHp, character.maxHp)
+    character.deductHp(character.maxHp)
+    assertEquals(character.getCurrentHp, 0)
+    character.deductHp(-1)
+    assertEquals(character.getCurrentHp, 0)
+    character.deductHp(1)
+    assertEquals(character.getCurrentHp, 0)
+  }
+
+  test("Stars management"){
+    assertEquals(character.getStars, 0)
+    character.addStars(2)
+    assertEquals(character.getStars, 2)
+    character.addStars(-1)
+    assertEquals(character.getStars, 2)
+    character.deductStars(5)
+    assertEquals(character.getStars, 0)
+    character.deductStars(-1)
+    assertEquals(character.getStars, 0)
+    character.deductStars(-1)
+    assertEquals(character.getStars, 0)
+  }
+
+  test("Victories management") {
+    assertEquals(character.getVictories, 0)
+    character.addVictories(1)
+    assertEquals(character.getVictories, 1)
+    character.addVictories(-1)
+    assertEquals(character.getVictories, 1)
+  }
+
+  test("Norma management"){
+    assertEquals(character.getNorma, 1)
+    character.setGoal(("Stars", 1))
+    assertEquals(character.getGoal, "1 Stars")
+    assertEquals(character.getStars, 0)
+    character.addStars(1)
+    assertEquals(character.getStars, 1)
+    character.normaCheck()
+    assertEquals(character.getNorma, 2)
+  }
+
+  test("Turns"){
+    character.startTurn()
   }
 }
