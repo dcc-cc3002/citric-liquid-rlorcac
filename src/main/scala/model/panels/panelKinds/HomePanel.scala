@@ -14,10 +14,11 @@ class HomePanel(val owner: PlayerCharacter) extends AbstractPanel{
    * @param player The `PlayerCharacter` that landed on the `Panel`
    */
   def activate(player: PlayerCharacter): Unit = {
-    /** Check if player can perform a normaClear
-     *
-     */
-    player.addHp(1)
-    player.normaCheck()
+    //TODO: implement correctly
+    /* this implementation seems not to work yet
+      player.addHp(1)
+      player.normaCheck()
+    */
+
   }
 }
