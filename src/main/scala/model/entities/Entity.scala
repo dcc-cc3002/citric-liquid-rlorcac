@@ -2,6 +2,7 @@ package cl.uchile.dcc.citric
 package model.entities
 
 trait Entity {
+  // TODO: turn fields into accessors
   val maxHp: Int
   val attack: Int
   val defense: Int
