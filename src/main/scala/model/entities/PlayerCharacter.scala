@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
 package model.entities
 
+import cl.uchile.dcc.citric.exceptions.InvalidStatException
+
 import scala.util.Random
 
 /** The `PlayerCharacter` class represents a character or avatar in the game, encapsulating
@@ -43,10 +45,10 @@ class PlayerCharacter(val name: String,
               defense: Int,
               evasion: Int,
               val randomNumberGenerator: Random = new Random()) extends AbstractEntity(maxHp, attack, defense, evasion) {
+  var currentHP: Int =  maxHp
   var stars: Int = 0
   private var norma: Int = 1
   var victories: Int = 0
-  var alive: Boolean = true
   var goal: (String, Int) = _
   setGoal() // Immediately calls setGoal() to set goal for next Norma level
 
@@ -59,7 +61,13 @@ class PlayerCharacter(val name: String,
    *
    */
   def startTurn(): Unit = {
-    // TODO: Add star addition logic.
+    if (currentHP < 0) throw new InvalidStatException("HP can not be lower than 0")
+    else if(currentHP == 0){
+      // TODO:
+    }
+    else{
+      // TODO: Add star addition logic.
+    }
   }
 
   def getNorma: Int = norma
@@ -68,8 +76,8 @@ class PlayerCharacter(val name: String,
    *
    */
   def normaCheck(): Unit = {
-    var normaMap: Map[String, Int] = Map[String, Int]("Victories" -> victories, "Stars" -> stars)
-    var goalCount: Int = goal._2
+    val normaMap: Map[String, Int] = Map[String, Int]("Victories" -> victories, "Stars" -> stars)
+    val goalCount: Int = goal._2
     if(normaMap(goal._1) >= goalCount){
       normaClear()
     }
@@ -87,7 +95,7 @@ class PlayerCharacter(val name: String,
    *
    */
   private def setGoal(): Unit = {
-    var default: (String, Int) = ("Victories", 1)
+    val default: (String, Int) = ("Victories", 1)
     // TODO: Add goal-setting logic.
     goal = default
   }
