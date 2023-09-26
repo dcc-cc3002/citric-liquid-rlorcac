@@ -10,8 +10,8 @@ class DropPanel extends AbstractPanel {
    * @param player The `PlayerCharacter` that landed on the `Panel`
    */
   def activate(player: PlayerCharacter): Unit = {
-    var roll: Int = player.rollDice()
-    var norma: Int = player.getNorma
+    val roll: Int = player.rollDice()
+    val norma: Int = player.getNorma
     player.stars = player.stars - roll * norma
   }
 }
