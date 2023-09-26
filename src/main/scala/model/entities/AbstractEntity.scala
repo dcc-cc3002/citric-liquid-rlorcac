@@ -5,5 +5,7 @@ abstract class AbstractEntity(val maxHp: Int,
                      val attack: Int,
                      val defense: Int,
                      val evasion: Int) extends Entity {
+  private var currentHp: Int = maxHp
+  def getCurrentHp(): Int = currentHp
 
 }
