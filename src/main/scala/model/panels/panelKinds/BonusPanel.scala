@@ -12,6 +12,6 @@ class BonusPanel extends AbstractPanel {
   def activate(player: PlayerCharacter): Unit = {
     val roll: Int = player.rollDice()
     val norma: Int = player.getNorma
-    player.stars = player.stars + (roll*norma).min(3*norma)
+    player.addStars((roll*norma).min(3*norma))
   }
 }
