@@ -17,6 +17,7 @@ class HomePanel(val owner: PlayerCharacter) extends AbstractPanel{
     /** Check if player can perform a normaClear
      *
      */
+    player.addHP(1)
     if(player == owner){
       player.normaCheck()
     }
