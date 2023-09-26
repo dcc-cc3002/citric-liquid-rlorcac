@@ -121,6 +121,8 @@ class PlayerCharacter(val name: String,
 
   /** Asks the player to choose a goal for next Norma level.
    *
+   * @param default Pair `(type, amount)` for next Norma level goal. Allowed values for `type`: "Victories", "Stars". Allowed values for `amount`: `Int`
+   *
    */
   def setGoal(default: (String, Int) = ("Victories", 1)): Unit = {
     // TODO: Add goal-setting logic.
