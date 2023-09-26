@@ -24,4 +24,9 @@ class RandomizeTest extends munit.FunSuite {
     }
   }
 
+  test("Two consecutive calls should produce different instances") {
+    assertNotEquals(rand.getPanelList, rand.getPanelList)
+    assertNotEquals(rand.getWildUnitList, rand.getWildUnitList)
+  }
+
 }
