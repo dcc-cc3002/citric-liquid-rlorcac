@@ -12,15 +12,15 @@ class RandomizeTest extends munit.FunSuite {
     rng = new Random(11)
   }
 
-  test("Generated WildUnits should be in the allowed list"){
+  test("Generated WildUnit's class should be in the allowed list of classes"){
     for(_ <- 1 to 10){
-      assert(rand.getWildUnitList.contains(rand.randomUnit()))
+      assert(rand.getWildUnitList.map(x => x.getClass).contains(rand.randomUnit().getClass))
     }
   }
 
-  test("Generated Panels should be in the allowed list"){
+  test("Generated Panel's class should be in the allowed list of classes"){
     for (_ <- 1 to 10) {
-      assert(rand.getPanelList.contains(rand.randomPanel()))
+      assert(rand.getPanelList.map(x => x.getClass).contains(rand.randomPanel().getClass))
     }
   }
 
