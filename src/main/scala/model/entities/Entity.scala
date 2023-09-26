@@ -12,7 +12,7 @@ trait Entity {
    *
    * @return Current HP of the `Entity`
    */
-  def getCurrentHp(): Int
+  def getCurrentHp: Int
   /** Called when the unit starts its turn
    *
    */
