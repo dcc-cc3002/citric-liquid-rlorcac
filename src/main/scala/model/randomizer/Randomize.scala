@@ -2,10 +2,10 @@ package cl.uchile.dcc.citric
 package model.randomizer
 
 import model.entities.WildUnit
-import cl.uchile.dcc.citric.model.entities.defaultEntities.{Chicken, RoboBall, Seagull}
+import model.entities.defaultEntities.{Chicken, RoboBall, Seagull}
 
-import cl.uchile.dcc.citric.model.panels.panelKinds.{BonusPanel, DropPanel, EncounterPanel, NeutralPanel}
-import cl.uchile.dcc.citric.model.panels.Panel
+import model.panels.panelKinds.{BonusPanel, DropPanel, EncounterPanel, NeutralPanel}
+import model.panels.Panel
 
 import scala.util.Random
 

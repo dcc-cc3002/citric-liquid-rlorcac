@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.entities
 
-import cl.uchile.dcc.citric.exceptions.InvalidStatException
+import exceptions.InvalidStatException
 
 import scala.util.Random
 
