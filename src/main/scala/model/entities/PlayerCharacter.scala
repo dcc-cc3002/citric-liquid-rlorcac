@@ -45,11 +45,10 @@ class PlayerCharacter(val name: String,
               defense: Int,
               evasion: Int,
               val randomNumberGenerator: Random = new Random()) extends AbstractEntity(maxHp, attack, defense, evasion) {
-  var currentHP: Int =  maxHp
   var stars: Int = 0
   private var norma: Int = 1
-  var victories: Int = 0
-  var goal: (String, Int) = _
+  private var victories: Int = 0
+  private var goal: (String, Int) = _
   setGoal() // Immediately calls setGoal() to set goal for next Norma level
 
   /** Rolls a dice and returns a value between 1 to 6. */
@@ -61,11 +60,14 @@ class PlayerCharacter(val name: String,
    *
    */
   def startTurn(): Unit = {
-    if (currentHP < 0) throw new InvalidStatException("HP can not be lower than 0")
-    else if(currentHP == 0){
-      // TODO:
+    if (this.currentHp < 0) throw new InvalidStatException("HP can not be lower than 0")
+    else if (currentHp > maxHp) {
+      throw new InvalidStatException("HP can not be higher than max HP")
     }
-    else{
+    else if(currentHp == 0){
+      // TODO: recovery
+    }
+    else{ // default case
       // TODO: Add star addition logic.
     }
   }
