@@ -45,7 +45,8 @@ class PlayerCharacter(val name: String,
                       defense: Int,
                       evasion: Int,
                       val randomNumberGenerator: Random = new Random(),
-                      stars: Int = 0) extends AbstractEntity(maxHp, attack, defense, evasion, stars) {
+                      stars: Int = 0
+                     ) extends AbstractEntity(maxHp, attack, defense, evasion, stars) {
   private var norma: Int = 1
   private var victories: Int = 0
   private var goal: (String, Int) = _
