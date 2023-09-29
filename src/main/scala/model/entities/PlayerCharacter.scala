@@ -40,13 +40,13 @@ import scala.util.Random
   * @author [[https://github.com/rlorcac/ Raimundo Lorca C.]]
   */
 class PlayerCharacter(val name: String,
-                      maxHp: Int,
-                      attack: Int,
-                      defense: Int,
-                      evasion: Int,
+                      _maxHp: Int,
+                      _attack: Int,
+                      _defense: Int,
+                      _evasion: Int,
                       val randomNumberGenerator: Random = new Random(),
-                      stars: Int = 0
-                     ) extends AbstractEntity(maxHp, attack, defense, evasion, stars) {
+                      _stars: Int = 0
+                     ) extends AbstractEntity(_maxHp, _attack, _defense, _evasion, _stars) {
   private var norma: Int = 1
   private var victories: Int = 0
   private var goal: (String, Int) = _
