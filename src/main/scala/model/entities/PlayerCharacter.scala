@@ -92,6 +92,8 @@ class PlayerCharacter(val name: String,
    */
   def norma: Int = _norma
 
+  protected def norma_=(newNorma: Int):Unit = {_norma = newNorma}
+
   /**
    *
    * @return The current count of victories for the `PlayerCharacter`
@@ -119,7 +121,7 @@ class PlayerCharacter(val name: String,
    *
    */
   private def normaClear(): Unit = {
-    _norma = _norma + 1
+    norma = norma + 1
     setGoal()
   }
 
