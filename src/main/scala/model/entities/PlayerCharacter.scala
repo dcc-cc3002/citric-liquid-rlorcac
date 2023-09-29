@@ -50,7 +50,7 @@ class PlayerCharacter(val name: String,
                       val randomNumberGenerator: Random = new Random(),
                       _stars: Int = 0
                      ) extends AbstractEntity(_maxHp, _attack, _defense, _evasion, _stars) {
-  private var norma: Int = 1
+  private var _norma: Int = 1
   private var victories: Int = 0
   private var goal: (String, Int) = _
   setGoal() // Immediately calls setGoal() to set goal for next Norma level
@@ -90,7 +90,7 @@ class PlayerCharacter(val name: String,
    *
    * @return The current norma level for the `PlayerCharacter`
    */
-  def getNorma: Int = norma
+  def norma: Int = _norma
 
   /**
    *
@@ -119,7 +119,7 @@ class PlayerCharacter(val name: String,
    *
    */
   private def normaClear(): Unit = {
-    norma = norma + 1
+    _norma = _norma + 1
     setGoal()
   }
 

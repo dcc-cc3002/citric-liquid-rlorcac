@@ -11,7 +11,7 @@ class DropPanel extends AbstractPanel {
    */
   def activate(player: PlayerCharacter): Unit = {
     val roll: Int = player.rollDice()
-    val norma: Int = player.getNorma
+    val norma: Int = player.norma
     player.deductStars(roll * norma)
   }
 }
