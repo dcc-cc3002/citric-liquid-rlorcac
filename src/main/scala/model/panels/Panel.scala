@@ -18,11 +18,13 @@ import scala.collection.mutable.ArrayBuffer
 trait Panel {
 
   /** Array of the characters currently positioned on this panel.
-    *
-    * In the game, multiple characters might be on the same panel at once, e.g., if multiple players
-    * land on the same space.
-    */
-  val characters: ArrayBuffer[PlayerCharacter]
+   *
+   * In the game, multiple characters might be on the same panel at once, e.g., if multiple players
+   * land on the same space.
+   *
+   * @return A list containing all players currently in the `Panel`
+   */
+  def characters: ArrayBuffer[PlayerCharacter]
 
   /** An array of panels that are directly connected to this one.
    *
@@ -31,7 +33,7 @@ trait Panel {
    *
    * @return a List of Panel instances that are adjacent or connected to this panel.
    */
-  var nextPanels: ArrayBuffer[Panel]
+  def nextPanels: ArrayBuffer[Panel]
 
   /** Adds a character to the list of characters currently on this panel.
     *
