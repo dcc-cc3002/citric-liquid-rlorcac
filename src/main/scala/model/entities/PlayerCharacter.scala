@@ -33,7 +33,7 @@ import scala.util.Random
   * @param _evasion The player's skill to completely avoid certain attacks.
   * @param randomNumberGenerator A utility to generate random numbers. Defaults to a new `Random`
   *                              instance.
-  * @param _stars The player's starting amount of stars
+  * @param _stars The player's starting amount of stars. Defaults to 0
   *
   *
   * @author [[https://github.com/danielRamirezL/ Daniel Ramírez L.]]
