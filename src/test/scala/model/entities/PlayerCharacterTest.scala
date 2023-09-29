@@ -67,30 +67,57 @@ class PlayerCharacterTest extends munit.FunSuite {
     }
   }
 
-  test("HP management") {
+  test("A character should start with full HP") {
     assertEquals(character.getCurrentHp, character.maxHp)
+  }
+
+  test("A character should not be able to have higher HP than maxHp"){
     character.addHp(1)
     assertEquals(character.getCurrentHp, character.maxHp)
+  }
+
+  test("Adding negative HP to a character should do nothing"){
     character.addHp(-1)
     assertEquals(character.getCurrentHp, character.maxHp)
+  }
+
+  test("Deducting maxHp from a character should leave them at 0 HP"){
     character.deductHp(character.maxHp)
     assertEquals(character.getCurrentHp, 0)
-    character.deductHp(-1)
-    assertEquals(character.getCurrentHp, 0)
+  }
+
+  test("Deducting HP from a character with no HP should leave them at 0 HP"){
+    character.deductHp(character.maxHp) // character should have 0 HP per previous test
     character.deductHp(1)
     assertEquals(character.getCurrentHp, 0)
   }
 
-  test("Stars management"){
+  test("Deducting negative HP from a character should do nothing"){
+    character.deductHp(-1)
+    assertEquals(character.getCurrentHp, character.maxHp)
+  }
+
+  test("Characters should start with 0 stars and 0 victories"){
     assertEquals(character.getStars, 0)
+    assertEquals(character.getVictories, 0)
+  }
+
+  test("Adding positive stars to a character should add the exact amount"){
     character.addStars(2)
     assertEquals(character.getStars, 2)
+  }
+
+  test("Adding negative stars to a character should do nothing"){
     character.addStars(-1)
-    assertEquals(character.getStars, 2)
+    assertEquals(character.getStars, 0)
+  }
+
+  test("Deducting stars from a character with 0 stars should leave them at 0 stars"){
     character.deductStars(5)
     assertEquals(character.getStars, 0)
-    character.deductStars(-1)
-    assertEquals(character.getStars, 0)
+  }
+
+  test("Deducting negative stars from a character should do nothing"){
     character.deductStars(-1)
     assertEquals(character.getStars, 0)
   }
@@ -103,10 +130,9 @@ class PlayerCharacterTest extends munit.FunSuite {
     assertEquals(character.getVictories, 1)
   }
 
-  test("Norma management"){
+  test("A character should start at Norma 1, then be able to proceed to Norma 2 once their goal is achieved"){
     assertEquals(character.getNorma, 1)
     character.setGoal(("Stars", 1))
-    assertEquals(character.getGoal, "1 Stars")
     assertEquals(character.getStars, 0)
     character.addStars(1)
     assertEquals(character.getStars, 1)
@@ -114,7 +140,20 @@ class PlayerCharacterTest extends munit.FunSuite {
     assertEquals(character.getNorma, 2)
   }
 
-  test("Turns"){
+  test("A character should be able to Norma Clear with both stars and victories"){
+    character.setGoal(("Stars", 1))
+    assertEquals(character.getGoal, "1 Stars")
+    character.addStars(1)
+    character.normaCheck()
+    assertEquals(character.getNorma, 2)
+    character.setGoal(("Victories",1))
+    character.addVictories(1)
+    character.normaCheck()
+    assertEquals(character.getNorma, 3)
+
+  }
+
+  test("A character should be able to start their turn"){
     character.startTurn()
   }
 }
