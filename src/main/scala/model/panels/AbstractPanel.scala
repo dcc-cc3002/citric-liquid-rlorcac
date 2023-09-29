@@ -11,9 +11,9 @@ abstract class AbstractPanel extends Panel{
   private val _characters: ArrayBuffer[PlayerCharacter] = new ArrayBuffer[PlayerCharacter]
   private var _nextPanels: ArrayBuffer[Panel] = new ArrayBuffer[Panel]
 
-  override def characters: ArrayBuffer[PlayerCharacter] = _characters.clone()
+  override def characters: ArrayBuffer[PlayerCharacter] = _characters.clone() // TODO: this returns a clone of the list but elements are still the same (mutable)
 
-  override def nextPanels: ArrayBuffer[Panel] = _nextPanels.clone()
+  override def nextPanels: ArrayBuffer[Panel] = _nextPanels.clone() // TODO: this returns a clone of the list but elements are still the same (mutable)
 
   def nextPanels_=(newNext: ArrayBuffer[Panel]):Unit = {_nextPanels = newNext}
 
