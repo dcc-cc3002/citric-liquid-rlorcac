@@ -22,7 +22,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
 
   override def stars: Int = _stars
 
-  protected def stars_=(newStars: Int): Unit = {_stars = stars}
+  protected def stars_=(newStars: Int): Unit = {_stars = newStars}
 
   def addStars(amount: Int): Int = {
     if(amount < 0) {
