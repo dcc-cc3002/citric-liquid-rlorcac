@@ -3,9 +3,30 @@ package model.entities
 
 trait Entity {
   // TODO: turn fields into accessors
+
+
+  /**
+   *
+   * @return Max HP of the `Entity`
+   */
   def maxHp: Int
+
+  /**
+   *
+   * @return ATK of the `Entity`
+   */
   def attack: Int
+
+  /**
+   *
+   * @return DEF of the `Entity`
+   */
   def defense: Int
+
+  /**
+   *
+   * @return EVA of the `Entity`
+   */
   def evasion: Int
 
   /**

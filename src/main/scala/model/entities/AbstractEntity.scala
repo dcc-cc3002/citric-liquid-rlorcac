@@ -18,7 +18,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
 
   def currentHp: Int = _currentHp
 
-  protected def currentHp_=(newCurrentHp: Int): Unit = _currentHp
+  protected def currentHp_=(newCurrentHp: Int): Unit = {_currentHp = newCurrentHp}
   def getStars: Int = stars
 
   def addStars(amount: Int): Int = {

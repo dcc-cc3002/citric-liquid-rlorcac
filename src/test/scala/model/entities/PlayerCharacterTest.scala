@@ -68,33 +68,33 @@ class PlayerCharacterTest extends munit.FunSuite {
   }
 
   test("A character should start with full HP") {
-    assertEquals(character.getCurrentHp, character.maxHp)
+    assertEquals(character.currentHp, character.maxHp)
   }
 
   test("A character should not be able to have higher HP than maxHp"){
     character.addHp(1)
-    assertEquals(character.getCurrentHp, character.maxHp)
+    assertEquals(character.currentHp, character.maxHp)
   }
 
   test("Adding negative HP to a character should do nothing"){
     character.addHp(-1)
-    assertEquals(character.getCurrentHp, character.maxHp)
+    assertEquals(character.currentHp, character.maxHp)
   }
 
   test("Deducting maxHp from a character should leave them at 0 HP"){
     character.deductHp(character.maxHp)
-    assertEquals(character.getCurrentHp, 0)
+    assertEquals(character.currentHp, 0)
   }
 
   test("Deducting HP from a character with no HP should leave them at 0 HP"){
     character.deductHp(character.maxHp) // character should have 0 HP per previous test
     character.deductHp(1)
-    assertEquals(character.getCurrentHp, 0)
+    assertEquals(character.currentHp, 0)
   }
 
   test("Deducting negative HP from a character should do nothing"){
     character.deductHp(-1)
-    assertEquals(character.getCurrentHp, character.maxHp)
+    assertEquals(character.currentHp, character.maxHp)
   }
 
   test("Characters should start with 0 stars and 0 victories"){
