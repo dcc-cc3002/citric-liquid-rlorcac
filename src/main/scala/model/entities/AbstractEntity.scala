@@ -19,7 +19,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
   def currentHp: Int = _currentHp
 
   protected def currentHp_=(newCurrentHp: Int): Unit = {_currentHp = newCurrentHp}
-  
+
   override def stars: Int = _stars
 
   protected def stars_=(newStars: Int): Unit = {_stars = stars}

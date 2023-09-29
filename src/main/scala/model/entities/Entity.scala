@@ -2,9 +2,6 @@ package cl.uchile.dcc.citric
 package model.entities
 
 trait Entity {
-  // TODO: turn fields into accessors
-
-
   /**
    *
    * @return Max HP of the `Entity`
