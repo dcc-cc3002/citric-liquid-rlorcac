@@ -3,16 +3,16 @@ package model.entities
 
 trait Entity {
   // TODO: turn fields into accessors
-  val maxHp: Int
-  val attack: Int
-  val defense: Int
-  val evasion: Int
+  def maxHp: Int
+  def attack: Int
+  def defense: Int
+  def evasion: Int
 
   /**
    *
    * @return Current HP of the `Entity`
    */
-  def getCurrentHp: Int
+  def currentHp: Int
 
   /**
    *

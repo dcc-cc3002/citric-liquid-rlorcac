@@ -1,13 +1,24 @@
 package cl.uchile.dcc.citric
 package model.entities
 
-abstract class AbstractEntity(val maxHp: Int,
-                              val attack: Int,
-                              val defense: Int,
-                              val evasion: Int,
+abstract class AbstractEntity(protected val _maxHp: Int,
+                              protected val _attack: Int,
+                              protected val _defense: Int,
+                              protected val _evasion: Int,
                               protected var stars: Int) extends Entity {
-  protected var currentHp: Int = maxHp
-  def getCurrentHp: Int = currentHp
+  private var _currentHp: Int = maxHp
+
+  override def maxHp: Int = _maxHp
+
+  override def attack: Int = _attack
+
+  override def defense: Int = _defense
+
+  override def evasion: Int = _evasion
+
+  def currentHp: Int = _currentHp
+
+  protected def currentHp_=(newCurrentHp: Int): Unit = _currentHp
   def getStars: Int = stars
 
   def addStars(amount: Int): Int = {
