@@ -60,14 +60,12 @@ trait Entity {
 
   def deductHp(dHp: Int): Int
 
-
   /** Takes away stars until 0 is reached
    *
    * @param amount Max amount of stars to take away. Must be non-negative.
    * @return Amount of stars actually taken away
    */
   def deductStars(amount: Int): Int
-
 
   /** Called when the unit starts its turn
    *

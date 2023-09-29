@@ -134,5 +134,4 @@ class PlayerCharacter(val name: String,
     // TODO: Add goal-setting logic.
     goal = default
   }
-
 }
