@@ -1,6 +1,15 @@
 package cl.uchile.dcc.citric
 package model.entities
 
+/** An abstract representation of all the units in the game, covering both players and
+ * wild units.
+ *
+ * @param _maxHp The maximum, and starting, amount of HP the `Entity` has.
+ * @param _attack The `Entity`'s capability to deal damage to opponents.
+ * @param _defense The `Entity`'s capability to resist or mitigate damage from opponents.
+ * @param _evasion The `Entity`'s skill to completely avoid certain attacks.
+ * @param _stars The `Entity`'s starting amount of stars. Defaults to 0
+ */
 abstract class AbstractEntity(protected val _maxHp: Int,
                               protected val _attack: Int,
                               protected val _defense: Int,
