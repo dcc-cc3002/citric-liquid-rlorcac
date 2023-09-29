@@ -28,9 +28,9 @@ class DropPanelTest extends FunSuite {
 
   test("Landing on a Drop Panel should take away stars") {
     character.addStars(30)
-    assertEquals(character.getStars, 30)
+    assertEquals(character.stars, 30)
     panel.addCharacter(character)
-    assertNotEquals(character.getStars, 30)
+    assertNotEquals(character.stars, 30)
   }
 
 }

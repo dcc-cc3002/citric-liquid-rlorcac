@@ -98,28 +98,28 @@ class PlayerCharacterTest extends munit.FunSuite {
   }
 
   test("Characters should start with 0 stars and 0 victories"){
-    assertEquals(character.getStars, 0)
+    assertEquals(character.stars, 0)
     assertEquals(character.getVictories, 0)
   }
 
   test("Adding positive stars to a character should add the exact amount"){
     character.addStars(2)
-    assertEquals(character.getStars, 2)
+    assertEquals(character.stars, 2)
   }
 
   test("Adding negative stars to a character should do nothing"){
     character.addStars(-1)
-    assertEquals(character.getStars, 0)
+    assertEquals(character.stars, 0)
   }
 
   test("Deducting stars from a character with 0 stars should leave them at 0 stars"){
     character.deductStars(5)
-    assertEquals(character.getStars, 0)
+    assertEquals(character.stars, 0)
   }
 
   test("Deducting negative stars from a character should do nothing"){
     character.deductStars(-1)
-    assertEquals(character.getStars, 0)
+    assertEquals(character.stars, 0)
   }
 
   test("Victories management") {
@@ -133,9 +133,9 @@ class PlayerCharacterTest extends munit.FunSuite {
   test("A character should start at Norma 1, then be able to proceed to Norma 2 once their goal is achieved"){
     assertEquals(character.getNorma, 1)
     character.setGoal(("Stars", 1))
-    assertEquals(character.getStars, 0)
+    assertEquals(character.stars, 0)
     character.addStars(1)
-    assertEquals(character.getStars, 1)
+    assertEquals(character.stars, 1)
     character.normaCheck()
     assertEquals(character.getNorma, 2)
   }

@@ -5,7 +5,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
                               protected val _attack: Int,
                               protected val _defense: Int,
                               protected val _evasion: Int,
-                              protected var stars: Int) extends Entity {
+                              protected var _stars: Int) extends Entity {
   private var _currentHp: Int = maxHp
 
   override def maxHp: Int = _maxHp
@@ -19,7 +19,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
   def currentHp: Int = _currentHp
 
   protected def currentHp_=(newCurrentHp: Int): Unit = {_currentHp = newCurrentHp}
-  def getStars: Int = stars
+  def stars: Int = stars
 
   def addStars(amount: Int): Int = {
     if(amount < 0) {

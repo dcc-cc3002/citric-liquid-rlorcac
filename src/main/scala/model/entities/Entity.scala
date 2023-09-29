@@ -39,7 +39,7 @@ trait Entity {
    *
    * @return Current star count of the `Entity`
    */
-  def getStars: Int
+  def stars: Int
 
   /** Adds HP up to the maximum allowed HP
    *

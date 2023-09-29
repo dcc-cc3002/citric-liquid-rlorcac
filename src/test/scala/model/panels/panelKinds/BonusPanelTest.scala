@@ -25,8 +25,8 @@ class BonusPanelTest extends munit.FunSuite {
     )
   }
   test("Landing on a Bonus Panel should add stars"){
-    assertEquals(character.getStars, 0)
+    assertEquals(character.stars, 0)
     panel.addCharacter(character)
-    assertNotEquals(character.getStars, 0)
+    assertNotEquals(character.stars, 0)
   }
 }
