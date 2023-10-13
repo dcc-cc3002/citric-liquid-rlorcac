@@ -4,6 +4,9 @@ package model.panels.panelKinds
 import model.entities.PlayerCharacter
 import model.panels.AbstractPanel
 
+/** Represents a panel where players gain stars upon landing.
+ *
+ */
 class BonusPanel extends AbstractPanel {
   /** To be called when a `PlayerCharacter` lands on a `Panel`
    *

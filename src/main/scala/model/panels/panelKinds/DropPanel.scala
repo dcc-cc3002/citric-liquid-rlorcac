@@ -4,6 +4,9 @@ package model.panels.panelKinds
 import model.entities.PlayerCharacter
 import model.panels.AbstractPanel
 
+/** Represents a panel where players lose stars upon landing.
+ *
+ */
 class DropPanel extends AbstractPanel {
   /** To be called when a `PlayerCharacter` lands on a `Panel`
    *

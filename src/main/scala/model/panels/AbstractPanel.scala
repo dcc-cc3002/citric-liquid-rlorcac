@@ -4,7 +4,7 @@ package model.panels
 import model.entities.PlayerCharacter
 import scala.collection.mutable.ArrayBuffer
 
-/** Implements general
+/** Implements general features of a panel
  *
  */
 abstract class AbstractPanel extends Panel{
