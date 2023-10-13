@@ -1,6 +1,9 @@
 package cl.uchile.dcc.citric
 package model.entities
 
+/** A representation of a general Entity, covering both players and wild units.
+ *
+ */
 trait Entity {
   /**
    *
