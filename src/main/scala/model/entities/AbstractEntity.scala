@@ -33,7 +33,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
 
   protected def stars_=(newStars: Int): Unit = {_stars = newStars}
 
-  def addStars(amount: Int): Int = {
+  override def addStars(amount: Int): Int = {
     if(amount < 0) {
       return 0
     }
@@ -42,7 +42,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
     stars - originalStars
   }
 
-  def addHp(dHp:  Int): Int = {
+  override def addHp(dHp:  Int): Int = {
     if (dHp < 0) {
       return 0
     }
@@ -52,7 +52,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
   }
 
 
-  def deductStars(amount: Int): Int = {
+  override def deductStars(amount: Int): Int = {
     if (amount < 0) {
       return 0
     }
@@ -61,7 +61,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
     originalStars - stars
   }
 
-  def deductHp(dHp: Int): Int = {
+  override def deductHp(dHp: Int): Int = {
     if (dHp < 0) {
       return 0
     }
@@ -69,4 +69,5 @@ abstract class AbstractEntity(protected val _maxHp: Int,
     currentHp = 0.max(currentHp - dHp)
     originalHp - currentHp
   }
+
 }
