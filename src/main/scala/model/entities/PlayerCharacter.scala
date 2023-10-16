@@ -71,7 +71,7 @@ class PlayerCharacter(val name: String,
   /** Called when the unit starts its turn
    *
    */
-  def startTurn(): Unit = {
+  override def startTurn(): Unit = {
     if (currentHp < 0) {
       throw new InvalidStatException("HP can not be lower than 0")
     }
