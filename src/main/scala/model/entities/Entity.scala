@@ -74,4 +74,23 @@ trait Entity {
    *
    */
   def startTurn(): Unit
+
+  /** Used when the Entity attacks another Entity
+   *
+   * @return The roll produced by this `Entity`'s attack
+   */
+  def attackRoll: Int
+
+  /** Used when the `Entity` chooses to defend from another `Entity`'s attack
+   * Deducts the HP caused by the attack after defense is applied
+   *
+   * @param roll The attack roll the entity has chosen to defend against
+   */
+  def defendRoll(roll: Int): Unit
+
+  /** Used when the `Entity` chooses to evade another `Entity`'s attack
+   *
+   * @param roll The attack roll the entity has chosen to evade
+   */
+  def evadeRoll(roll: Int): Unit
 }
