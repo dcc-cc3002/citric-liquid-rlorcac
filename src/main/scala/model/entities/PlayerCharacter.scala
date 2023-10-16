@@ -31,7 +31,7 @@ import scala.util.Random
   * @param _attack The player's capability to deal damage to opponents.
   * @param _defense The player's capability to resist or mitigate damage from opponents.
   * @param _evasion The player's skill to completely avoid certain attacks.
-  * @param randomNumberGenerator A utility to generate random numbers. Defaults to a new `Random`
+  * @param _randomNumberGenerator A utility to generate random numbers. Defaults to a new `Random`
   *                              instance.
   * @param _stars The player's starting amount of stars. Defaults to 0
   *
@@ -47,18 +47,13 @@ class PlayerCharacter(val name: String,
                       _attack: Int,
                       _defense: Int,
                       _evasion: Int,
-                      val randomNumberGenerator: Random = new Random(),
+                      val _randomNumberGenerator: Random = new Random(),
                       _stars: Int = 0
-                     ) extends AbstractEntity(_maxHp, _attack, _defense, _evasion, _stars) {
+                     ) extends AbstractEntity(_maxHp, _attack, _defense, _evasion, _stars, _randomNumberGenerator) {
   private var _norma: Int = 1
   private var victories: Int = 0
   private var goal: (String, Int) = _
   setGoal() // Immediately calls setGoal() to set goal for next Norma level
-
-  /** Rolls a dice and returns a value between 1 to 6. */
-  def rollDice(): Int = {
-    randomNumberGenerator.nextInt(6) + 1
-  }
 
   /** Adds victories to the `PlayerCharacter`'s counter
    *
