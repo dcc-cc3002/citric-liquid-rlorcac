@@ -167,10 +167,29 @@ class PlayerCharacterTest extends munit.FunSuite {
   }
 
   test("A character should be able to roll for attack"){
-    for(i <- 1 to 10){
+    for(_ <- 1 to 10){
       val atkRoll = character1.attackRoll
       assert(atkRoll >= character1.attack + 1)
       assert(atkRoll <= character1.attack + 6)
+    }
+  }
+  test("A character should be able to defend from an attack") {
+    for (_ <- 1 to 10) {
+      val atkRoll = character1.attackRoll
+      val originalHp = character2.currentHp
+      character2.defendRoll(atkRoll)
+      assert(character2.currentHp < originalHp)
+      assert(character2.currentHp >= originalHp - atkRoll)
+      assert(character2.currentHp >= 0)
+    }
+  }
+  test("A character should be able to evade an attack") {
+    for (_ <- 1 to 10) {
+      val atkRoll = character1.attackRoll
+      val originalHp = character2.currentHp
+      character2.evadeRoll(atkRoll)
+      assert(character2.currentHp <= originalHp)
+      assert(character2.currentHp == 0.max(originalHp - atkRoll) || character2.currentHp == originalHp)
     }
   }
 }
