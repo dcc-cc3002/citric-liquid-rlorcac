@@ -15,17 +15,27 @@ abstract class AbstractPanel extends Panel{
 
   override def nextPanels: ArrayBuffer[Panel] = _nextPanels.clone() // TODO: this returns a clone of the list but elements are still the same (mutable)
 
-  def nextPanels_=(newNext: ArrayBuffer[Panel]):Unit = {_nextPanels = newNext}
-
   def addCharacter(player: PlayerCharacter): Unit = {
     _characters.append(player)
     activate(player)
   }
 
   def removeCharacter(player: PlayerCharacter): Unit = {
-    if(!this.characters.contains(player)) throw new Exception("Player not found in requested panel")
-    while(this.characters.contains(player)){
-      _characters.remove(characters.indexOf(player))
+    if(!this._characters.contains(player)) throw new Exception("Player not found in requested panel")
+    while(this._characters.contains(player)){
+      _characters.remove(_characters.indexOf(player))
     }
   }
+
+  override def addNextPanel(panel: Panel): Unit = {
+    this._nextPanels.append(panel)
+  }
+
+  override def removeNextPanel(panel: Panel): Unit = {
+    if (!this._nextPanels.contains(panel)) throw new Exception("Panel not found in requested panel's next panels")
+    while (this._nextPanels.contains(panel)) {
+      _nextPanels.remove(_nextPanels.indexOf(panel))
+    }
+  }
+
 }
