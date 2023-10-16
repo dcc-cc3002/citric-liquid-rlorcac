@@ -175,6 +175,7 @@ class PlayerCharacterTest extends munit.FunSuite {
   }
   test("A character should be able to defend from an attack") {
     for (_ <- 1 to 10) {
+      character2.addHp(character2.maxHp) // Heal to max
       val atkRoll = character1.attackRoll
       val originalHp = character2.currentHp
       character2.defendRoll(atkRoll)
@@ -185,6 +186,7 @@ class PlayerCharacterTest extends munit.FunSuite {
   }
   test("A character should be able to evade an attack") {
     for (_ <- 1 to 10) {
+      character2.addHp(character2.maxHp) // Heal to max
       val atkRoll = character1.attackRoll
       val originalHp = character2.currentHp
       character2.evadeRoll(atkRoll)
