@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
 package model.entities
 
+import scala.util.Random
+
 /** An abstract representation of all the units in the game, covering both players and
  * wild units.
  *
@@ -9,13 +11,22 @@ package model.entities
  * @param _defense The `Entity`'s capability to resist or mitigate damage from opponents.
  * @param _evasion The `Entity`'s skill to completely avoid certain attacks.
  * @param _stars The `Entity`'s starting amount of stars. Defaults to 0
+ * @param randomNumberGenerator A utility to generate random numbers. Defaults to a new `Random`
+ *                              instance.
  */
+//noinspection DuplicatedCode
 abstract class AbstractEntity(protected val _maxHp: Int,
                               protected val _attack: Int,
                               protected val _defense: Int,
                               protected val _evasion: Int,
-                              protected var _stars: Int) extends Entity {
+                              protected var _stars: Int,
+                              protected val randomNumberGenerator: Random = new Random()
+                             ) extends Entity {
   private var _currentHp: Int = maxHp
+
+  override def rollDice(): Int = {
+    randomNumberGenerator.nextInt(6) + 1
+  }
 
   override def maxHp: Int = _maxHp
 
@@ -70,4 +81,17 @@ abstract class AbstractEntity(protected val _maxHp: Int,
     originalHp - currentHp
   }
 
+  override def attackRoll: Int = rollDice() + attack
+
+  override def defendRoll(atkRoll: Int): Unit = {
+    val defRoll = rollDice() + defense
+    val subtract = 1.max(atkRoll - defRoll)
+    deductHp(subtract)
+  }
+
+  override def evadeRoll(atkRoll: Int): Unit = {
+    val evaRoll = rollDice() + evasion
+    val subtract = if(evaRoll > atkRoll) 0 else atkRoll
+    deductHp(subtract)
+  }
 }
