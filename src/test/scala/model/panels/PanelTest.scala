@@ -4,7 +4,6 @@ package model.panels
 import model.entities.PlayerCharacter
 import model.randomizer.Randomize
 
-import cl.uchile.dcc.citric.model.panels.panelKinds.{DropPanel, HomePanel}
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
@@ -51,8 +50,9 @@ class PanelTest extends FunSuite {
       panels.append(nextPanel)
     }
     for(_ <- 1 to 10){
-      val choice = new Random().nextInt()
+      val choice = new Random().nextInt(panels.size)
       val chosen: Panel = panels(choice)
+      panels.remove(choice)
       assertEquals(panel.nextPanels.contains(chosen), true)
       panel.removeNextPanel(chosen)
       assertEquals(panel.nextPanels.contains(chosen), false)
