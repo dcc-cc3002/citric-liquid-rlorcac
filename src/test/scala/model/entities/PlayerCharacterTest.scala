@@ -156,6 +156,7 @@ class PlayerCharacterTest extends munit.FunSuite {
     character1.normaCheck()
     assertEquals(character1.norma, 2)
     character1.setGoal(("Victories",1))
+    assertEquals(character1.getGoal, "1 Victories")
     character1.addVictories(1)
     character1.normaCheck()
     assertEquals(character1.norma, 3)
