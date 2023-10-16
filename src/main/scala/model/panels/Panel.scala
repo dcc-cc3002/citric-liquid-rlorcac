@@ -56,4 +56,16 @@ trait Panel {
    * @param player The `PlayerCharacter` that landed on the `Panel`
    */
   def activate(player: PlayerCharacter): Unit
+
+  /** Adds a `Panel` to `nextPanels`
+   *
+   * @param panel a `Panel` to add to this `Panel`'s `nextPanels`
+   */
+  def addNextPanel(panel: Panel): Unit
+
+  /** Removes a `Panel` from `nextPanels`
+   *
+   * @param panel a `Panel` to remove from this `Panel`'s `nextPanels`
+   */
+  def removeNextPanel(panel: Panel): Unit
 }
