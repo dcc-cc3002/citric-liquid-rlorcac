@@ -26,11 +26,17 @@ class HomePanelTest extends FunSuite {
     panel = new HomePanel(character)
   }
 
-  test("Landing on a Home Panel should currently do nothing") {
-    //TODO: Update to future expected implementation
-    val original: PlayerCharacter = character
-    assertEquals(character, original)
+  test("Landing on a Home Panel should heal a character") {
+    character.deductHp(1)
     panel.addCharacter(character)
-    assertEquals(character, original)
+    assertEquals(character.currentHp, character.maxHp)
+  }
+
+  test("Landing on a Home Panel should cause them to Norma Check") {
+    val originalNorma = character.norma
+    character.setGoal(("Stars", 1))
+    character.addStars(1)
+    panel.addCharacter(character)
+    assertEquals(character.norma, originalNorma + 1)
   }
 }
