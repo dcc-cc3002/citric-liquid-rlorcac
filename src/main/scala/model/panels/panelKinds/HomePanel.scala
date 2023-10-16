@@ -16,10 +16,7 @@ class HomePanel(val owner: PlayerCharacter) extends AbstractPanel{
   def activate(player: PlayerCharacter): Unit = {
     // TODO: implement correctly
     // this implementation seems not to work yet
-    /*
-      player.addHp(1)
-      player.normaCheck()
-    */
-
+    player.addHp(1)
+    player.normaCheck()
   }
 }
