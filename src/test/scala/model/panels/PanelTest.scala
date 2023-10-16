@@ -2,9 +2,13 @@ package cl.uchile.dcc.citric
 package model.panels
 
 import model.entities.PlayerCharacter
-
 import model.randomizer.Randomize
+
+import cl.uchile.dcc.citric.model.panels.panelKinds.{DropPanel, HomePanel}
 import munit.FunSuite
+
+import scala.collection.mutable.ArrayBuffer
+import scala.util.Random
 
 class PanelTest extends FunSuite {
   private var character: PlayerCharacter = _
@@ -31,5 +35,28 @@ class PanelTest extends FunSuite {
     assertEquals(panel.characters.contains(character), true)
     panel.removeCharacter(character)
     assertEquals(panel.characters.contains(character), false)
+  }
+
+  test("A panel's next panels can be added to"){
+    val nextPanel: Panel = new Randomize().randomPanel()
+    panel.addNextPanel(nextPanel)
+    assert(panel.nextPanels.contains(nextPanel))
+  }
+
+  test("A panel's next panels can be removed from") {
+    val panels: ArrayBuffer[Panel] = ArrayBuffer()
+    for(_ <- 1 to 10){
+      val nextPanel: Panel = new Randomize().randomPanel()
+      panel.addNextPanel(nextPanel)
+      panels.append(nextPanel)
+    }
+    for(_ <- 1 to 10){
+      val choice = new Random().nextInt()
+      val chosen: Panel = panels(choice)
+      assertEquals(panel.nextPanels.contains(chosen), true)
+      panel.removeNextPanel(chosen)
+      assertEquals(panel.nextPanels.contains(chosen), false)
+    }
+    assertEquals(panel.nextPanels.isEmpty, true)
   }
 }
