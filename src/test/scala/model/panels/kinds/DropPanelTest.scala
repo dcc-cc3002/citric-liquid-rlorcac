@@ -1,11 +1,12 @@
 package cl.uchile.dcc.citric
-package model.panels.panelKinds
+package model.panels.kinds
 
 import model.entities.PlayerCharacter
-import model.panels.Panel
-import scala.util.Random
 
-class BonusPanelTest extends munit.FunSuite {
+import cl.uchile.dcc.citric.model.panels.Panel
+import munit.FunSuite
+
+class DropPanelTest extends FunSuite {
   private var character: PlayerCharacter = _
   private var panel: Panel = _
   private val name = "testPlayer"
@@ -15,7 +16,7 @@ class BonusPanelTest extends munit.FunSuite {
   private val evasion = 1
 
   override def beforeEach(context: BeforeEach): Unit = {
-    panel = new BonusPanel()
+    panel = new DropPanel()
     character = new PlayerCharacter(
       name,
       maxHp,
@@ -24,9 +25,12 @@ class BonusPanelTest extends munit.FunSuite {
       evasion
     )
   }
-  test("Landing on a Bonus Panel should add stars"){
-    assertEquals(character.stars, 0)
+
+  test("Landing on a Drop Panel should take away stars") {
+    character.addStars(30)
+    assertEquals(character.stars, 30)
     panel.addCharacter(character)
-    assertNotEquals(character.stars, 0)
+    assertNotEquals(character.stars, 30)
   }
+
 }

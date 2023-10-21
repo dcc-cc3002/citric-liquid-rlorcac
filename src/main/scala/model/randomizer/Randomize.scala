@@ -4,7 +4,7 @@ package model.randomizer
 import model.entities.WildUnit
 import model.entities.defaultEntities.{Chicken, RoboBall, Seagull}
 
-import model.panels.panelKinds.{BonusPanel, DropPanel, EncounterPanel, NeutralPanel}
+import model.panels.kinds.{BonusPanel, DropPanel, EncounterPanel, NeutralPanel}
 import model.panels.Panel
 
 import scala.util.Random

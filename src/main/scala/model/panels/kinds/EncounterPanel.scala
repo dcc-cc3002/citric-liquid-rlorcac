@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model.panels.panelKinds
+package model.panels.kinds
 
 import model.entities.{PlayerCharacter, WildUnit}
 import model.panels.AbstractPanel

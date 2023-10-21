@@ -1,14 +1,13 @@
 package cl.uchile.dcc.citric
-package model.panels.panelKinds
+package model.panels.kinds
 
-import model.entities.{PlayerCharacter, WildUnit}
+import model.entities.PlayerCharacter
+import model.panels.Panel
+import scala.util.Random
 
-import munit.FunSuite
-
-class EncounterPanelTest extends FunSuite {
-
+class BonusPanelTest extends munit.FunSuite {
   private var character: PlayerCharacter = _
-  private var panel: EncounterPanel = _
+  private var panel: Panel = _
   private val name = "testPlayer"
   private val maxHp = 10
   private val attack = 1
@@ -16,7 +15,7 @@ class EncounterPanelTest extends FunSuite {
   private val evasion = 1
 
   override def beforeEach(context: BeforeEach): Unit = {
-    panel = new EncounterPanel()
+    panel = new BonusPanel()
     character = new PlayerCharacter(
       name,
       maxHp,
@@ -25,10 +24,9 @@ class EncounterPanelTest extends FunSuite {
       evasion
     )
   }
-
-  test("Landing on a Bonus Panel should add stars") {
-    assertEquals(panel.getCurrentUnit, None)
+  test("Landing on a Bonus Panel should add stars"){
+    assertEquals(character.stars, 0)
     panel.addCharacter(character)
-    assertEquals(panel.getCurrentUnit.isEmpty, false)
+    assertNotEquals(character.stars, 0)
   }
 }

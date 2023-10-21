@@ -1,14 +1,14 @@
 package cl.uchile.dcc.citric
-package model.panels.panelKinds
+package model.panels.kinds
 
-import model.entities.PlayerCharacter
-import model.panels.Panel
+import model.entities.{PlayerCharacter, WildUnit}
+
 import munit.FunSuite
 
-class NeutralPanelTest extends FunSuite {
+class EncounterPanelTest extends FunSuite {
 
   private var character: PlayerCharacter = _
-  private var panel: Panel = _
+  private var panel: EncounterPanel = _
   private val name = "testPlayer"
   private val maxHp = 10
   private val attack = 1
@@ -16,7 +16,7 @@ class NeutralPanelTest extends FunSuite {
   private val evasion = 1
 
   override def beforeEach(context: BeforeEach): Unit = {
-    panel = new NeutralPanel()
+    panel = new EncounterPanel()
     character = new PlayerCharacter(
       name,
       maxHp,
@@ -26,11 +26,9 @@ class NeutralPanelTest extends FunSuite {
     )
   }
 
-  test("Landing on a Neutral Panel should do nothing") {
-    // This test is probably wrong
-    val original: PlayerCharacter = character
-    assertEquals(character, original)
+  test("Landing on a Bonus Panel should add stars") {
+    assertEquals(panel.getCurrentUnit, None)
     panel.addCharacter(character)
-    assertEquals(character, original)
+    assertEquals(panel.getCurrentUnit.isEmpty, false)
   }
 }
