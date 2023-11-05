@@ -1,8 +1,8 @@
 package cl.uchile.dcc.citric
 package model.entities.defaultEntities
 
-import model.entities.WildUnit
+import model.entities.AbstractWildUnit
 
-class Seagull extends WildUnit(3, +1, -1, -1) {
+class Seagull extends AbstractWildUnit(3, +1, -1, -1, 2) {
 
 }

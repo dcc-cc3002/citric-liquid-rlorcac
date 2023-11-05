@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.entities.defaultEntities
 
-import model.entities.WildUnit
+import model.entities.AbstractWildUnit
 
-class Chicken extends WildUnit(3, -1, -1, +1) {
+class Chicken extends AbstractWildUnit(3, -1, -1, +1, 3) {
 }
