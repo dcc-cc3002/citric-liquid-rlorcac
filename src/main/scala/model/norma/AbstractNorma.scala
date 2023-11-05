@@ -23,8 +23,22 @@ abstract class AbstractNorma (protected val _level: Int,
     if(goalList.isEmpty) throw new Exception("Goal type was not within legal values")
     else this._goalAmount = goalList.get.lift(this._level-1).getOrElse(0)
   }
-  def level: Int = _level
 
-  def goal: String = s"${_goalType}, ${_goalAmount}"
+  override def level: Int = _level
 
+  override def goal: String = s"${_goalType}, ${_goalAmount}"
+
+  /** Creates and returns a `Norma` object of the next level if possible.
+   *
+   * @param nextGoalType The type of goal chosen to reach the next norma level. Legal values: "Victories" | "Stars"
+   * @return A `Norma` object of the next level if possible, current object if there is no further level.
+   */
+  protected def next(nextGoalType: => String): Norma
+
+  override def check(stars: Int, victories: Int, nextGoalType: => String): Norma = {
+    val normaMap: Map[String, Int] = Map[String, Int]("Victories" -> victories, "Stars" -> stars)
+    val goalProgress = normaMap.getOrElse(_goalType, 0)
+    if(goalProgress >= _goalAmount) next(nextGoalType)
+    else this
+  }
 }
