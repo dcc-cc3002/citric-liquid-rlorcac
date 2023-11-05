@@ -49,7 +49,8 @@ class PlayerCharacter(val name: String,
                       _evasion: Int,
                       val _randomNumberGenerator: Random = new Random(),
                       _stars: Int = 0
-                     ) extends AbstractEntity(_maxHp, _attack, _defense, _evasion, _stars, _randomNumberGenerator) {
+                     ) extends AbstractEntity(_maxHp, _attack, _defense, _evasion, _stars, _randomNumberGenerator)
+                     with Player {
   private var _norma: Int = 1
   private var victories: Int = 0
   private var goal: (String, Int) = _
@@ -64,6 +65,7 @@ class PlayerCharacter(val name: String,
   }
 
   /** Called when the unit starts its turn
+   * @throws InvalidStatException("") When
    *
    */
   override def startTurn(): Unit = {
@@ -87,6 +89,10 @@ class PlayerCharacter(val name: String,
    */
   def norma: Int = _norma
 
+  /**
+   *
+   * @param newNorma The new `Norma` object to replace the current one with
+   */
   protected def norma_=(newNorma: Int):Unit = {_norma = newNorma}
 
   /**
