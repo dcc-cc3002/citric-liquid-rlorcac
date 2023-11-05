@@ -23,10 +23,9 @@ trait Norma {
    * @param stars The player's current amount of stars
    * @param victories The player's current amount of victories.
    * @param nextGoalType The goal type for the player's next norma level. Valid values: "Victories" | "Stars". May be passed as a function via the controller.
-   * @param nextGoalAmount The goal amount for the player's next norma level. Optional. If no value is passed, it will be calculated from the next level and goal type. May be passed as a function via the controller.
    * @return Norma object with level incremented by 1 if check passes, current object if check fails.
    */
-  def check(stars: Int, victories: Int, nextGoalType: => String, nextGoalAmount: => Option[Int] = None): Norma
+  def check(stars: Int, victories: Int, nextGoalType: => String): Norma
 
 
 }
