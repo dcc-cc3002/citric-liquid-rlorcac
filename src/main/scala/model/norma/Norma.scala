@@ -8,7 +8,7 @@ trait Norma {
 
   /**
    *
-   * @return The current goal in s"${_goalType}, ${_goalAmount}" format
+   * @return The current goal in s"${goalType}, ${goalAmount}" format
    */
   def goal: String
 
@@ -23,7 +23,7 @@ trait Norma {
    * @param stars The player's current amount of stars
    * @param victories The player's current amount of victories.
    * @param nextGoalType The goal type for the player's next norma level. Valid values: "Victories" | "Stars". May be passed as a function via the controller.
-   * @return Norma object with level incremented by 1 if check passes, current object if check fails.
+   * @return Norma object of next level if check passes, current object if check fails.
    */
   def check(stars: Int, victories: Int, nextGoalType: => String): Norma
 

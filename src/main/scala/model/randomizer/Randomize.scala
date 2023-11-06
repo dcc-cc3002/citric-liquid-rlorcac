@@ -11,6 +11,7 @@ import scala.util.Random
 
 /** Handles randomness while choosing types of `Panel`s, `WildUnit`s, etc.
  *
+ * @param rng A source of randomness
  */
 class Randomize(private val rng: Random = new Random()) {
   /** Generates a random `WildUnit`
