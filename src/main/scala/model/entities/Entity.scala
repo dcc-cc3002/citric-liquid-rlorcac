@@ -97,4 +97,22 @@ trait Entity {
    * @param atkRoll The attack roll the entity has chosen to evade
    */
   def evadeRoll(atkRoll: Int): Unit
+
+  /**
+   *
+   * @return The amount of victories the Entity gives when defeated
+   */
+  def givesVictories: Int
+
+  /** Processes the logic for this entity being defeated by a Player
+   *
+   * @param player The player that defeated this entity
+   */
+  def defeatedBy(player: Player): Unit
+
+  /** Processes the logic for this entity being defeated by a Wild Unit
+   *
+   * @param wildUnit The Wild Unit that defeated this entity
+   */
+  def defeatedBy(wildUnit: WildUnit): Unit
 }
