@@ -24,8 +24,8 @@ class PlayerCharacterTest extends munit.FunSuite {
   This is a good practice because it will reset the object before each test, so you don't have
   to worry about the state of the object between tests.
   */
-  private var character1: PlayerCharacter = _  // <- x = _ is the same as x = null
-  private var character2: PlayerCharacter = _
+  private var character1: Player = _  // <- x = _ is the same as x = null
+  private var character2: Player = _
 
   // This method is executed before each `test(...)` method.
   override def beforeEach(context: BeforeEach): Unit = {
@@ -36,6 +36,7 @@ class PlayerCharacterTest extends munit.FunSuite {
       attack,
       defense,
       evasion,
+      "Stars",
       randomNumberGenerator
     )
     character2 = new PlayerCharacter(
@@ -44,6 +45,7 @@ class PlayerCharacterTest extends munit.FunSuite {
         attack,
         defense,
         evasion,
+        "Victories",
         randomNumberGenerator
       )
   }
@@ -70,7 +72,7 @@ class PlayerCharacterTest extends munit.FunSuite {
   // are always the same for the same seed.
   test("A character should be able to roll a dice with a fixed seed") {
     val other =
-      new PlayerCharacter(name2, maxHp, attack, defense, evasion, new Random(11))
+      new PlayerCharacter(name2, maxHp, attack, defense, evasion, "Stars", new Random(11))
     for (_ <- 1 to 10) {
       assertEquals(character1.rollDice(), other.rollDice())
     }
@@ -108,7 +110,7 @@ class PlayerCharacterTest extends munit.FunSuite {
 
   test("Characters should start with 0 stars and 0 victories"){
     assertEquals(character1.stars, 0)
-    assertEquals(character1.getVictories, 0)
+    assertEquals(character1.victories, 0)
   }
 
   test("Adding positive stars to a character should add the exact amount"){
@@ -132,35 +134,31 @@ class PlayerCharacterTest extends munit.FunSuite {
   }
 
   test("Victories management") {
-    assertEquals(character1.getVictories, 0)
+    assertEquals(character1.victories, 0)
     character1.addVictories(1)
-    assertEquals(character1.getVictories, 1)
+    assertEquals(character1.victories, 1)
     character1.addVictories(-1)
-    assertEquals(character1.getVictories, 1)
+    assertEquals(character1.victories, 1)
   }
 
   test("A character should start at Norma 1, then be able to proceed to Norma 2 once their goal is achieved"){
     assertEquals(character1.norma, 1)
-    character1.setGoal(("Stars", 1))
     assertEquals(character1.stars, 0)
-    character1.addStars(1)
-    assertEquals(character1.stars, 1)
-    character1.normaCheck()
+    character1.addStars(10)
+    assertEquals(character1.stars, 10)
+    character1.normaCheck("Victories")
     assertEquals(character1.norma, 2)
   }
 
   test("A character should be able to Norma Clear with both stars and victories"){
-    character1.setGoal(("Stars", 1))
-    assertEquals(character1.getGoal, "1 Stars")
-    character1.addStars(1)
-    character1.normaCheck()
+    assertEquals(character1.getGoal, "Stars, 10")
+    character1.addStars(10)
+    character1.normaCheck("Victories")
     assertEquals(character1.norma, 2)
-    character1.setGoal(("Victories",1))
-    assertEquals(character1.getGoal, "1 Victories")
-    character1.addVictories(1)
-    character1.normaCheck()
+    assertEquals(character1.getGoal, "Victories, 3")
+    character1.addVictories(3)
+    character1.normaCheck("Stars")
     assertEquals(character1.norma, 3)
-
   }
 
   test("A character should be able to start their turn"){
