@@ -1,7 +1,8 @@
 package cl.uchile.dcc.citric
 package model.panels
 
-import model.entities.PlayerCharacter
+import model.entities.{Player, PlayerCharacter}
+
 import scala.collection.mutable.ArrayBuffer
 
 /** Represents a single cell on a board, known as a Panel.
@@ -24,7 +25,7 @@ trait Panel {
    *
    * @return A list containing all players currently in the `Panel`
    */
-  def characters: ArrayBuffer[PlayerCharacter]
+  def characters: ArrayBuffer[Player]
 
   /** An array of panels that are directly connected to this one.
    *
@@ -41,7 +42,7 @@ trait Panel {
     *
     * @param player The player character to add to this panel.
     */
-  def addCharacter(player: PlayerCharacter): Unit
+  def addCharacter(player: Player): Unit
 
   /** Removes a character from the list of characters currently on this panel.
     *
@@ -49,13 +50,13 @@ trait Panel {
     *
     * @param player The player character to remove from this panel.
     */
-  def removeCharacter(player: PlayerCharacter): Unit
+  def removeCharacter(player: Player): Unit
 
   /** To be called when a `PlayerCharacter` lands on a `Panel`
    *
    * @param player The `PlayerCharacter` that landed on the `Panel`
    */
-  def activate(player: PlayerCharacter): Unit
+  def activate(player: Player): Unit
 
   /** Adds a `Panel` to `nextPanels`
    *

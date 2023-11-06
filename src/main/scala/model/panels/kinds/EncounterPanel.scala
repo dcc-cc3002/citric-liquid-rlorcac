@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.panels.kinds
 
-import model.entities.{PlayerCharacter, WildUnit}
+import model.entities.{Player, WildUnit}
 import model.panels.AbstractPanel
 import model.randomizer.Randomize
 
@@ -14,7 +14,7 @@ class EncounterPanel extends AbstractPanel {
    *
    * @param player The `PlayerCharacter` that landed on the `Panel`
    */
-  def activate(player: PlayerCharacter): Unit = {
+  def activate(player: Player): Unit = {
     if(wildUnit.isEmpty){
       wildUnit = Some(new Randomize().randomUnit())
     }

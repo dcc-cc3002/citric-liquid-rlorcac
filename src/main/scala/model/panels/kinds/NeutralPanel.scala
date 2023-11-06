@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.panels.kinds
 
-import model.entities.PlayerCharacter
+import model.entities.Player
 import model.panels.AbstractPanel
 
 /** Represents a panel that does nothing when a player lands on it.
@@ -14,5 +14,5 @@ class NeutralPanel extends AbstractPanel {
    *
    * @param player The `PlayerCharacter` that landed on the `Panel`
    */
-  def activate(player: PlayerCharacter): Unit = {}
+  def activate(player: Player): Unit = {}
 }

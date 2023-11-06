@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.panels.kinds
 
-import model.entities.PlayerCharacter
+import model.entities.Player
 import model.panels.AbstractPanel
 
 /** Represents a panel where players gain stars upon landing.
@@ -12,7 +12,7 @@ class BonusPanel extends AbstractPanel {
    *
    * @param player The `PlayerCharacter` that landed on the `Panel`
    */
-  def activate(player: PlayerCharacter): Unit = {
+  def activate(player: Player): Unit = {
     val roll: Int = player.rollDice()
     val norma: Int = player.norma
     player.addStars((roll*norma).min(3*norma))
