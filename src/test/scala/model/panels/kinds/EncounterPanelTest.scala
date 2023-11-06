@@ -22,7 +22,8 @@ class EncounterPanelTest extends FunSuite {
       maxHp,
       attack,
       defense,
-      evasion
+      evasion,
+      "Stars"
     )
   }
 

@@ -1,12 +1,11 @@
 package cl.uchile.dcc.citric
 package model.panels.kinds
 
-import model.entities.PlayerCharacter
+import model.entities.{Player, PlayerCharacter}
 import model.panels.Panel
-import scala.util.Random
 
 class BonusPanelTest extends munit.FunSuite {
-  private var character: PlayerCharacter = _
+  private var character: Player = _
   private var panel: Panel = _
   private val name = "testPlayer"
   private val maxHp = 10
@@ -21,7 +20,8 @@ class BonusPanelTest extends munit.FunSuite {
       maxHp,
       attack,
       defense,
-      evasion
+      evasion,
+      "Stars"
     )
   }
   test("Landing on a Bonus Panel should add stars"){

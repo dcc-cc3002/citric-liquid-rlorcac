@@ -21,7 +21,8 @@ class HomePanelTest extends FunSuite {
       maxHp,
       attack,
       defense,
-      evasion
+      evasion,
+      "Stars"
     )
     panel = new HomePanel(character)
   }
@@ -34,8 +35,8 @@ class HomePanelTest extends FunSuite {
 
   test("Landing on a Home Panel should cause them to Norma Check") {
     val originalNorma = character.norma
-    character.setGoal(("Stars", 1))
-    character.addStars(1)
+    character.addStars(10)
+    assertEquals(character.getGoal, "Stars, 10")
     panel.addCharacter(character)
     assertEquals(character.norma, originalNorma + 1)
   }

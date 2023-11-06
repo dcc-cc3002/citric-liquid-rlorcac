@@ -1,13 +1,13 @@
 package cl.uchile.dcc.citric
 package model.panels.kinds
 
-import model.entities.PlayerCharacter
+import model.entities.{Player, PlayerCharacter}
 
-import cl.uchile.dcc.citric.model.panels.Panel
+import model.panels.Panel
 import munit.FunSuite
 
 class DropPanelTest extends FunSuite {
-  private var character: PlayerCharacter = _
+  private var character: Player = _
   private var panel: Panel = _
   private val name = "testPlayer"
   private val maxHp = 10
@@ -22,7 +22,8 @@ class DropPanelTest extends FunSuite {
       maxHp,
       attack,
       defense,
-      evasion
+      evasion,
+      "Stars"
     )
   }
 

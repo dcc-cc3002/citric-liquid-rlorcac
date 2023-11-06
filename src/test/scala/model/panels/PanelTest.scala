@@ -25,7 +25,8 @@ class PanelTest extends FunSuite {
       maxHp,
       attack,
       defense,
-      evasion
+      evasion,
+      "Stars"
     )
   }
 
