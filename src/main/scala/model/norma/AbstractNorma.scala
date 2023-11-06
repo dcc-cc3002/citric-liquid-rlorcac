@@ -20,8 +20,7 @@ abstract class AbstractNorma (protected val _level: Int,
     this(_level, _goalType, 0)
     val goalDict: Map[String, List[Int]] = Map[String, List[Int]]("Stars" -> List(10, 30, 70, 120, 200), "Victories" -> List(1, 3, 6, 10, 14)) // goals for passing from levels 1, 2, 3, 4, 5
     val goalList = goalDict.get(_goalType)
-    if(goalList.isEmpty) throw new Exception("Goal type was not within legal values")
-    else this._goalAmount = goalList.get.lift(this._level-1).getOrElse(0)
+    this._goalAmount = goalList.getOrElse(Nil).lift(this._level-1).getOrElse(0)
   }
 
   override def level: Int = _level
