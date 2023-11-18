@@ -9,6 +9,12 @@ purpose is to serve as an educational tool, teaching foundational programming co
 
 ---
 
+## Game State Diagram
+
+The game proceeds as indicated by the following state diagram.
+
+![State Diagram](docs/state-diagram.png)
+
 ## For Students
 
 The remainder of this README is yours to complete. Take this opportunity to describe your
