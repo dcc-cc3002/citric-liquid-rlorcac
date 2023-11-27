@@ -8,7 +8,6 @@ import model.entities.Player
 trait GameState {
   protected def getStateName: String
 
-  def doNext(): Unit
   def startGame(): Unit
   def newGame(): Unit
   def startTurn(): Unit
