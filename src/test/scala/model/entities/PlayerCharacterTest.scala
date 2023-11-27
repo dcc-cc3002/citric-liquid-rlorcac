@@ -161,8 +161,10 @@ class PlayerCharacterTest extends munit.FunSuite {
     assertEquals(character1.norma, 3)
   }
 
-  test("A character should be able to start their turn"){
-    character1.startTurn()
+  test("A character should be able to start their turn, and starting the turn should add stars"){
+    val originalStars = character1.stars
+    character1.startTurn(1)
+    assertNotEquals(originalStars, character1.stars)
   }
 
   test("A character should be able to roll for attack"){

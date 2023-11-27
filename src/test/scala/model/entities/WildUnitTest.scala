@@ -13,7 +13,7 @@ class WildUnitTest extends munit.FunSuite {
     seagull = new Seagull()
   }
   test("Chickens should start with 3 stars, full HP, 3 HP, -1 ATK, -1 DEF, and 1 EVA"){
-    chicken.startTurn()
+    chicken.startTurn(1)
     assertEquals(chicken.stars, 3)
     assertEquals(chicken.currentHp, chicken.maxHp)
     assertEquals(chicken.maxHp, 3)
@@ -23,7 +23,7 @@ class WildUnitTest extends munit.FunSuite {
   }
 
   test("RoboBalls should start with 2 stars, full HP, 3 HP, -1 ATK, 1 DEF, and -1 EVA") {
-    roboBall.startTurn()
+    roboBall.startTurn(1)
     assertEquals(roboBall.stars, 2)
     assertEquals(roboBall.currentHp, roboBall.maxHp)
     assertEquals(roboBall.maxHp, 3)
@@ -33,7 +33,7 @@ class WildUnitTest extends munit.FunSuite {
   }
 
   test("Seagulls should start with 2 stars, full HP, 3 HP, 1 ATK, -1 DEF, and -1 EVA") {
-    seagull.startTurn()
+    seagull.startTurn(1)
     assertEquals(seagull.stars, 2)
     assertEquals(seagull.currentHp, seagull.maxHp)
     assertEquals(seagull.maxHp, 3)

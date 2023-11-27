@@ -67,7 +67,7 @@ class PlayerCharacter(protected val _name: String,
   override def getGoal: String = _norma.goal
 
   override def startTurn(chapter: Int): Unit = {
-      // TODO: Add star addition logic.
+      addStars(chapter/5 + 1)
   }
 
   override def norma: Int = _norma.level
