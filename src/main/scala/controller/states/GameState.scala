@@ -10,7 +10,7 @@ trait GameState {
 
   def startGame(): Unit
   def newGame(): Unit
-  def startTurn(): Unit
+  def startTurn(player: Player): Unit
   def endCombat(): Unit
   def startCombat(): Unit
   def landOnPanel(player: Player, panel: Panel): Unit
