@@ -27,15 +27,15 @@ abstract class AbstractGameState(protected val stateName: String,
 
   override def landOnPanel(player: Player, panel: Panel): Unit = invalidTransition("PlayerPanel")
 
-  override def startRecovery(): Unit = invalidTransition("Recovery")
+  override def startRecovery(player: Player): Unit = invalidTransition("Recovery")
 
-  override def recoveryCheck(): Unit = invalidTransition("PlayerTurn | MainLoop")
+  override def recoveryCheck(player: Player): Unit = invalidTransition("PlayerTurn | MainLoop")
 
-  override def checkNorma6(): Unit = invalidTransition("EndGame")
+  override def checkNorma6(playerList: List[Player]): Unit = invalidTransition("EndGame")
 
-  override def rollDie(): Unit = invalidTransition("PlayerMovement")
+  override def rollDie(player: Player): Unit = invalidTransition("PlayerMovement")
 
   override def checkIfEnemyOnPanel(player: Player, panel: Panel): Unit = invalidTransition("Combat | MainLoop")
 
-  override def checkIfKO(player: Player): Unit = invalidTransition("Recovery | PlayerMovement")
+  override def checkIfKO(): Boolean = invalidTransition("Recovery | PlayerMovement")
 }

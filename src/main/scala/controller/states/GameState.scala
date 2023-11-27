@@ -14,10 +14,10 @@ trait GameState {
   def endCombat(): Unit
   def startCombat(): Unit
   def landOnPanel(player: Player, panel: Panel): Unit
-  def startRecovery(): Unit
-  def recoveryCheck(): Unit
-  def checkNorma6(): Unit
-  def rollDie(): Unit
+  def startRecovery(player: Player): Unit
+  def recoveryCheck(player: Player): Unit
+  def checkNorma6(playerList: List[Player]): Unit
+  def rollDie(player: Player): Unit
   def checkIfEnemyOnPanel(player: Player, panel: Panel): Unit
-  def checkIfKO(player: Player): Unit
+  def checkIfKO(): Boolean
 }
