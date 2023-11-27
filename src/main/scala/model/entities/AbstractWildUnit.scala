@@ -19,7 +19,7 @@ abstract class AbstractWildUnit(maxHp: Int,
    *
    *  For a WildUnit, this method does nothing.
    */
-  def startTurn(): Unit = {
+  def startTurn(chapter: Int): Unit = {
   }
 
   override def givesVictories: Int = 1

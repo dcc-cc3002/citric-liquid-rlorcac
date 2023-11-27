@@ -66,13 +66,8 @@ class PlayerCharacter(protected val _name: String,
 
   override def getGoal: String = _norma.goal
 
-  override def startTurn(): Unit = {
-    if(currentHp == 0){
-      // TODO: recovery
-    }
-    else{ // default case
+  override def startTurn(chapter: Int): Unit = {
       // TODO: Add star addition logic.
-    }
   }
 
   override def norma: Int = _norma.level

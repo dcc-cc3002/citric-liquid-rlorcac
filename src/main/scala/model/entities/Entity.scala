@@ -73,7 +73,7 @@ trait Entity {
   /** Called when the unit starts its turn
    *
    */
-  def startTurn(): Unit
+  def startTurn(chapter: Int): Unit
 
   /** Rolls a dice and returns a value between 1 to 6.
    */
