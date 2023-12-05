@@ -5,6 +5,6 @@ import model.factories.Factory
 import model.panels.Panel
 import model.panels.kinds.DropPanel
 
-class DropPanelFactory extends Factory[Panel]{
-  override def create(): Panel = new DropPanel()
+class DropPanelFactory extends Factory[DropPanel]{
+  override def create(): DropPanel = new DropPanel()
 }

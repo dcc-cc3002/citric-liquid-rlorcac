@@ -6,7 +6,7 @@ package model.factories
  * @tparam T The type of output the factory creates. Factory should be covariant relative to T.
  */
 trait Factory[+T] {
-  /** Creates a new object according to the factory's
+  /** Creates a new object according to the factory's type
    *
    * @return A new element of type T or a subtype of T
    */

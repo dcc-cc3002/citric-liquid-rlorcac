@@ -5,6 +5,6 @@ import model.factories.Factory
 import model.panels.Panel
 import model.panels.kinds.BonusPanel
 
-class BonusPanelFactory extends Factory[Panel]{
-  override def create(): Panel = new BonusPanel()
+class BonusPanelFactory extends Factory[BonusPanel]{
+  override def create(): BonusPanel = new BonusPanel()
 }
