@@ -5,7 +5,6 @@ import model.entities.Player
 
 trait GameState {
   protected def getStateName: String
-
   def startGame(): Unit
   def newGame(): Unit
   def startTurn(player: Player): Unit
@@ -13,9 +12,9 @@ trait GameState {
   def startCombat(): Unit
   def landOnPanel(): Unit
   def startRecovery(): Unit
-  def recoveryCheck(): Unit
+  def passRecovery(): Unit
+  def failRecovery(): Unit
   def checkNorma6(): Unit
   def rollDie(): Unit
-  def checkIfEnemyOnPanel(): Unit
-  def checkIfKO(): Boolean
+  def endTurn(): Unit
 }

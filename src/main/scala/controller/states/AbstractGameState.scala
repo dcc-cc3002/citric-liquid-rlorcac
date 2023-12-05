@@ -27,13 +27,13 @@ abstract class AbstractGameState(protected val stateName: String,
 
   override def startRecovery(): Unit = invalidTransition("Recovery")
 
-  override def recoveryCheck(): Unit = invalidTransition("PlayerTurn | MainLoop")
+  override def passRecovery(): Unit = invalidTransition("PlayerTurn")
+
+  override def failRecovery(): Unit = invalidTransition("MainLoop")
 
   override def checkNorma6(): Unit = invalidTransition("EndGame")
 
   override def rollDie(): Unit = invalidTransition("PlayerMovement")
 
-  override def checkIfEnemyOnPanel(): Unit = invalidTransition("Combat | MainLoop")
-
-  override def checkIfKO(): Boolean = invalidTransition("Recovery | PlayerMovement")
+  override def endTurn(): Unit = invalidTransition("MainLoop")
 }
