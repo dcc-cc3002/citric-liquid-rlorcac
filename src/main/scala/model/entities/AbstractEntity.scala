@@ -14,7 +14,6 @@ import scala.util.Random
  * @param randomNumberGenerator A utility to generate random numbers. Defaults to a new `Random`
  *                              instance.
  */
-//noinspection DuplicatedCode
 abstract class AbstractEntity(protected val _maxHp: Int,
                               protected val _attack: Int,
                               protected val _defense: Int,
@@ -23,7 +22,6 @@ abstract class AbstractEntity(protected val _maxHp: Int,
                               protected val randomNumberGenerator: Random = new Random()
                              ) extends Entity {
   private var _currentHp: Int = maxHp
-
   override def rollDice(): Int = {
     randomNumberGenerator.nextInt(6) + 1
   }
