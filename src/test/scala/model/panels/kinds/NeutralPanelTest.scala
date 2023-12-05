@@ -3,8 +3,8 @@ package model.panels.kinds
 
 import model.entities.PlayerCharacter
 import model.panels.Panel
+import model.panels.factories.NeutralPanelFactory
 
-import cl.uchile.dcc.citric.model.panels.factories.NeutralPanelFactory
 import munit.FunSuite
 
 class NeutralPanelTest extends FunSuite {

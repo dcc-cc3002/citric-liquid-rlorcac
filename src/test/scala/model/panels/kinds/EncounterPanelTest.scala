@@ -2,8 +2,8 @@ package cl.uchile.dcc.citric
 package model.panels.kinds
 
 import model.entities.PlayerCharacter
+import model.panels.factories.EncounterPanelFactory
 
-import cl.uchile.dcc.citric.model.panels.factories.EncounterPanelFactory
 import munit.FunSuite
 
 class EncounterPanelTest extends FunSuite {

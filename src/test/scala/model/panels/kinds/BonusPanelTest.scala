@@ -3,8 +3,7 @@ package model.panels.kinds
 
 import model.entities.{Player, PlayerCharacter}
 import model.panels.Panel
-
-import cl.uchile.dcc.citric.model.panels.factories.BonusPanelFactory
+import model.panels.factories.BonusPanelFactory
 
 class BonusPanelTest extends munit.FunSuite {
   private var character: Player = _

@@ -3,8 +3,8 @@ package model.panels.kinds
 
 import model.entities.{Player, PlayerCharacter}
 import model.panels.Panel
+import model.panels.factories.DropPanelFactory
 
-import cl.uchile.dcc.citric.model.panels.factories.DropPanelFactory
 import munit.FunSuite
 
 class DropPanelTest extends FunSuite {
