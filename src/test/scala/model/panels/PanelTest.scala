@@ -47,7 +47,7 @@ class PanelTest extends FunSuite {
   test("A panel's next panels can be removed from") {
     val panels: ArrayBuffer[Panel] = ArrayBuffer()
     for(_ <- 1 to 10){
-      val nextPanel: Panel = new RandomizedFactory().randomPanel()
+      val nextPanel: Panel = panelFactory.create()
       panel.addNextPanel(nextPanel)
       panels.append(nextPanel)
     }
