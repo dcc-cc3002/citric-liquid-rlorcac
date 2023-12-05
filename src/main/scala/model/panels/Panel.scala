@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.panels
 
-import model.entities.{Player, PlayerCharacter}
+import model.entities.Player
 
 import scala.collection.mutable.ArrayBuffer
 

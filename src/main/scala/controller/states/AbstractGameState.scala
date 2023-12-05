@@ -1,11 +1,10 @@
 package cl.uchile.dcc.citric
 package controller.states
 
+import controller.GameController
 import exceptions.InvalidStateTransitionException
 import model.entities.Player
 import model.panels.Panel
-
-import controller.GameController
 
 abstract class AbstractGameState(protected val stateName: String,
                                  protected val context: GameController
