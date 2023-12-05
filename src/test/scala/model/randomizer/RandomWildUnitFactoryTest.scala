@@ -16,7 +16,7 @@ class RandomWildUnitFactoryTest extends FunSuite {
 
   test("Generated WildUnit's class should be in the allowed list of classes") {
     for (_ <- 1 to 10) {
-      assert(rand.factoryList.map(x => x.getClass).contains(rand.create().getClass))
+      assert(rand.factoryList.map(x => x.create().getClass).contains(rand.create().getClass))
     }
   }
   test("Two consecutive calls should produce different instances of WildUnit") {
