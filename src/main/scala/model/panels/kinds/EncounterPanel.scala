@@ -23,5 +23,5 @@ class EncounterPanel extends AbstractPanel {
     }
   }
 
-  def getCurrentUnit: Option[WildUnit] = wildUnit
+  override def getWildUnit: Option[WildUnit] = wildUnit
 }

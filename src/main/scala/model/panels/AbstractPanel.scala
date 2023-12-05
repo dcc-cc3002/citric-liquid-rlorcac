@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.panels
 
-import model.entities.Player
+import model.entities.{Player, WildUnit}
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -39,4 +39,5 @@ abstract class AbstractPanel extends Panel{
     }
   }
 
+  override def getWildUnit: Option[WildUnit] = None
 }

@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.panels
 
-import model.entities.Player
+import model.entities.{Player, WildUnit}
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -17,6 +17,8 @@ import scala.collection.mutable.ArrayBuffer
   * @author [[https://github.com/rlorcac Raimundo Lorca C.]]
   */
 trait Panel {
+  def getWildUnit: Option[WildUnit]
+
 
   /** Array of the characters currently positioned on this panel.
    *

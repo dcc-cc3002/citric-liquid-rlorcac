@@ -30,15 +30,15 @@ class EncounterPanelTest extends FunSuite {
   }
 
   test("Landing on an Encounter Panel should create a WildUnit in the panel") {
-    assertEquals(panel.getCurrentUnit, None)
+    assertEquals(panel.getWildUnit, None)
     panel.addCharacter(character)
-    assertEquals(panel.getCurrentUnit.isEmpty, false)
+    assertEquals(panel.getWildUnit.isEmpty, false)
   }
 
   test("Factory | Landing on an Encounter Panel should create a WildUnit in the panel") {
     panel = factory.create()
-    assertEquals(panel.getCurrentUnit, None)
+    assertEquals(panel.getWildUnit, None)
     panel.addCharacter(character)
-    assertEquals(panel.getCurrentUnit.isEmpty, false)
+    assertEquals(panel.getWildUnit.isEmpty, false)
   }
 }
