@@ -33,7 +33,7 @@ class HomePanelTest extends FunSuite {
     assertEquals(character.currentHp, character.maxHp)
   }
 
-  test("Landing on a Home Panel should cause them to Norma Check") {
+  test("Landing on a Home Panel should cause player to Norma Check") {
     val originalNorma = character.norma
     character.addStars(10)
     assertEquals(character.getGoal, "Stars, 10")

@@ -4,6 +4,8 @@ package model.panels.kinds
 import model.entities.{Player, PlayerCharacter}
 import model.panels.Panel
 
+import cl.uchile.dcc.citric.model.panels.factories.BonusPanelFactory
+
 class BonusPanelTest extends munit.FunSuite {
   private var character: Player = _
   private var panel: Panel = _
@@ -12,6 +14,7 @@ class BonusPanelTest extends munit.FunSuite {
   private val attack = 1
   private val defense = 1
   private val evasion = 1
+  private val factory = new BonusPanelFactory()
 
   override def beforeEach(context: BeforeEach): Unit = {
     panel = new BonusPanel()
@@ -25,6 +28,12 @@ class BonusPanelTest extends munit.FunSuite {
     )
   }
   test("Landing on a Bonus Panel should add stars"){
+    assertEquals(character.stars, 0)
+    panel.addCharacter(character)
+    assertNotEquals(character.stars, 0)
+  }
+  test("Factory | Landing on a Bonus Panel should add stars") {
+    panel = factory.create()
     assertEquals(character.stars, 0)
     panel.addCharacter(character)
     assertNotEquals(character.stars, 0)

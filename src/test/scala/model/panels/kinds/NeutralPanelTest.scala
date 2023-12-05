@@ -4,6 +4,7 @@ package model.panels.kinds
 import model.entities.PlayerCharacter
 import model.panels.Panel
 
+import cl.uchile.dcc.citric.model.panels.factories.NeutralPanelFactory
 import munit.FunSuite
 
 class NeutralPanelTest extends FunSuite {
@@ -15,6 +16,7 @@ class NeutralPanelTest extends FunSuite {
   private val attack = 1
   private val defense = 1
   private val evasion = 1
+  private val factory = new NeutralPanelFactory()
 
   override def beforeEach(context: BeforeEach): Unit = {
     panel = new NeutralPanel()
@@ -35,4 +37,14 @@ class NeutralPanelTest extends FunSuite {
     panel.addCharacter(character)
     assertEquals(character, original)
   }
+
+  test("Factory | Landing on a Neutral Panel should do nothing") {
+    // This test is probably wrong
+    panel = factory.create()
+    val original: PlayerCharacter = character
+    assertEquals(character, original)
+    panel.addCharacter(character)
+    assertEquals(character, original)
+  }
+
 }

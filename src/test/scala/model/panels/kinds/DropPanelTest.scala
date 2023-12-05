@@ -4,6 +4,7 @@ package model.panels.kinds
 import model.entities.{Player, PlayerCharacter}
 import model.panels.Panel
 
+import cl.uchile.dcc.citric.model.panels.factories.DropPanelFactory
 import munit.FunSuite
 
 class DropPanelTest extends FunSuite {
@@ -14,6 +15,7 @@ class DropPanelTest extends FunSuite {
   private val attack = 1
   private val defense = 1
   private val evasion = 1
+  private val factory = new DropPanelFactory()
 
   override def beforeEach(context: BeforeEach): Unit = {
     panel = new DropPanel()
@@ -28,6 +30,14 @@ class DropPanelTest extends FunSuite {
   }
 
   test("Landing on a Drop Panel should take away stars") {
+    character.addStars(30)
+    assertEquals(character.stars, 30)
+    panel.addCharacter(character)
+    assertNotEquals(character.stars, 30)
+  }
+
+  test("Factory | Landing on a Drop Panel should take away stars") {
+    panel = factory.create()
     character.addStars(30)
     assertEquals(character.stars, 30)
     panel.addCharacter(character)

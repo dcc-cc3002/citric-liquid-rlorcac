@@ -3,6 +3,7 @@ package model.panels.kinds
 
 import model.entities.PlayerCharacter
 
+import cl.uchile.dcc.citric.model.panels.factories.EncounterPanelFactory
 import munit.FunSuite
 
 class EncounterPanelTest extends FunSuite {
@@ -14,6 +15,7 @@ class EncounterPanelTest extends FunSuite {
   private val attack = 1
   private val defense = 1
   private val evasion = 1
+  private val factory = new EncounterPanelFactory()
 
   override def beforeEach(context: BeforeEach): Unit = {
     panel = new EncounterPanel()
@@ -27,7 +29,14 @@ class EncounterPanelTest extends FunSuite {
     )
   }
 
-  test("Landing on a Bonus Panel should add stars") {
+  test("Landing on an Encounter Panel should create a WildUnit in the panel") {
+    assertEquals(panel.getCurrentUnit, None)
+    panel.addCharacter(character)
+    assertEquals(panel.getCurrentUnit.isEmpty, false)
+  }
+
+  test("Factory | Landing on an Encounter Panel should create a WildUnit in the panel") {
+    panel = factory.create()
     assertEquals(panel.getCurrentUnit, None)
     panel.addCharacter(character)
     assertEquals(panel.getCurrentUnit.isEmpty, false)
