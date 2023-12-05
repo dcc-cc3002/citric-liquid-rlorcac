@@ -10,4 +10,8 @@ class PlayerTurn(controller: GameController, player: Player) extends AbstractGam
   override def startRecovery(): Unit = {
     context.setState(new Recovery(context, player))
   }
+
+  override def rollDie(): Unit = {
+    context.setState(new PlayerMovement(controller, player))
+  }
 }

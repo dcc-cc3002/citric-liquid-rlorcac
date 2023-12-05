@@ -8,4 +8,4 @@ import controller.states.AbstractGameState
  *
  * @param controller A game controller used for testing.
  */
-class NullState(controller: GameController) extends AbstractGameState("Null", controller)
+class NullState(controller: GameController) extends AbstractGameState("NullState", controller)

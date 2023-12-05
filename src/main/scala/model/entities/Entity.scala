@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
 package model.entities
 
+import controller.GameController
+
 /** A representation of a general Entity, covering both players and wild units.
  *
  */
@@ -121,4 +123,16 @@ trait Entity {
    * @param enemy The `Entity` this `Entity` has defeated.
    */
   def defeatEnemy(enemy: Entity): Unit
+
+  /** Sets a controller the `Entity` can ask for input.
+   *
+   * @param controller The controller this `Entity` belongs to.
+   */
+  def setController(controller: GameController): Unit
+
+  /** Gets the controller the `Entity` can send signals to.
+   *
+   * @return The controller this `Entity` belongs to.
+   */
+  def getContext: GameController
 }

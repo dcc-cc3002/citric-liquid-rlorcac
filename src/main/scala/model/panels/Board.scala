@@ -14,13 +14,13 @@ import scala.util.Random
  * @param size The size of the board. Actual size will be `1.max(size) + players.size` as `players.size` Home Panels will be added.
  */
 class Board(players: List[Player], size: Int) {
-  private val homePanels: List[Panel] = players.map(player => new HomePanel(player))
+  private val homePanels: List[HomePanel] = players.map(player => new HomePanel(player, players.indexOf(player)))
   private val panelFactory = new RandomPanelFactory()
   val panels: ArrayBuffer[Panel] = ArrayBuffer.range(0, 1.max(size)).map(_ => panelFactory.create())
-  panels(0) = new NeutralPanel()
+  panels(0) = new NeutralPanel(0)
   private val startingPanel: Panel = panels(0)
-  for(i <- 0 to panels.size){
-    panels(i).addNextPanel(panels(i+1 % panels.size))
+  for(i <- panels.indices){
+    panels(i).addNextPanel(panels(i+1 % panels.size)) // makes a loop out of the panels
   }
   for(homePanel <- homePanels){
     panels(Random.nextInt(panels.size)).addNextPanel(homePanel)
@@ -30,4 +30,6 @@ class Board(players: List[Player], size: Int) {
   for(player <- players){
     startingPanel.addCharacter(player)
   }
+
+  def boardSize: Int = panels.size
 }

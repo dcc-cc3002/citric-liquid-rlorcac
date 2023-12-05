@@ -4,6 +4,7 @@ package controller.states
 import controller.GameController
 import exceptions.InvalidStateTransitionException
 import model.entities.{Player, WildUnit}
+import model.panels.Panel
 
 abstract class AbstractGameState(protected val stateName: String,
                                  protected val context: GameController
@@ -27,15 +28,13 @@ abstract class AbstractGameState(protected val stateName: String,
 
   override def startWildUnitCombat(wildUnit: WildUnit): Unit = invalidTransition("Combat")
 
-  override def landOnPanel(): Unit = invalidTransition("PlayerPanel")
+  override def landOnPanel(panel: Panel): Unit = invalidTransition("PlayerPanel")
 
   override def startRecovery(): Unit = invalidTransition("Recovery")
 
   override def passRecovery(): Unit = invalidTransition("PlayerTurn")
 
   override def failRecovery(): Unit = invalidTransition("MainLoop")
-
-  override def checkNorma6(): Unit = invalidTransition("EndGame")
 
   override def rollDie(): Unit = invalidTransition("PlayerMovement")
 

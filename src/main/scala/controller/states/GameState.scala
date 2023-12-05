@@ -2,12 +2,13 @@ package cl.uchile.dcc.citric
 package controller.states
 
 import model.entities.{Player, WildUnit}
+import model.panels.Panel
 
 /**
  *
  */
 trait GameState {
-  protected def getStateName: String
+  def getStateName: String
   def doAction(): Unit
   def startGame(): Unit
   def newGame(): Unit
@@ -15,11 +16,11 @@ trait GameState {
   def endCombat(): Unit
   def startPlayerCombat(player: Player): Unit
   def startWildUnitCombat(wildUnit: WildUnit): Unit
-  def landOnPanel(): Unit
+  def landOnPanel(panel: Panel): Unit
   def startRecovery(): Unit
   def passRecovery(): Unit
   def failRecovery(): Unit
-  def checkNorma6(): Unit
+
   def rollDie(): Unit
   def endTurn(): Unit
 }

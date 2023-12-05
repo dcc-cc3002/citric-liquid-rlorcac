@@ -9,8 +9,8 @@ import model.panels.Panel
 trait Player extends Entity {
 
   def setPanel(panel: Panel): Unit
-  def currentPanel: Panel
 
+  def currentPanel: Panel
 
   /** Makes the player roll a check to recover from being KO.
    *
@@ -59,4 +59,9 @@ trait Player extends Entity {
    * @return The goal type set for the next level
    */
   def setGoal(default: String): String
+
+  /** Causes the player to win the game by signalling its controller that it has reached norma 6.
+   *
+   */
+  def winGame(): Unit
 }
