@@ -54,7 +54,7 @@ class PlayerCharacter(protected val _name: String,
                       _stars: Int = 0
                      ) extends AbstractEntity(_maxHp, _attack, _defense, _evasion, _stars, _randomNumberGenerator)
   with Player {
-  private var _norma: Norma = new Norma1(startGoalType)
+  private var _norma: Norma = new Norma1(startGoalType, this)
   private var _victories: Int = 0
   private var _currentPanel: Panel = _
 
@@ -109,11 +109,19 @@ class PlayerCharacter(protected val _name: String,
    * @param difficulty The minimum value for passing the recovery check.
    */
   override def rollRecovery(difficulty: Int): Unit = {
-    val roll = rollDice()
-    if(roll >= difficulty){
+    if(rollDice() >= difficulty){
       addHp(maxHp)
     }
   }
 
   override def currentPanel: Panel = _currentPanel
+
+  override def winGame(): Unit = {
+    try{
+      getContext.endGame(this)
+    }
+    catch{
+      case e: Exception => {} // ignore the exception, this would only happen in testing when a player has no controller set.
+    }
+  }
 }

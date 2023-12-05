@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
 package model.norma
 
+import model.entities.Player
+
 
 /** An abstract implementation of the general requirements for a Norma object
  *
@@ -10,14 +12,15 @@ package model.norma
  */
 abstract class AbstractNorma (protected val _level: Int,
                               protected val _goalType: String,
-                              protected var _goalAmount: Int) extends Norma {
+                              protected var _goalAmount: Int,
+                              val player: Player) extends Norma {
   /** An abstract implementation of the general requirements for a Norma object. Calculates the required amount for the goal based on level and goal type.
    *
    * @param _level The level of the `Norma` object
    * @param _goalType The type of goal chosen to reach the next norma level. Legal values: "Victories" | "Stars"
    */
-  def this(_level: Int, _goalType: String) = {
-    this(_level, _goalType, 0)
+  def this(_level: Int, _goalType: String, player: Player) = {
+    this(_level, _goalType, 0, player)
     val goalDict: Map[String, List[Int]] = Map[String, List[Int]]("Stars" -> List(10, 30, 70, 120, 200), "Victories" -> List(1, 3, 6, 10, 14)) // goals for passing from levels 1, 2, 3, 4, 5
     val goalList = goalDict.get(_goalType)
     this._goalAmount = goalList.getOrElse(Nil).lift(this._level-1).getOrElse(0)
