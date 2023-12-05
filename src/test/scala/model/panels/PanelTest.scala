@@ -2,7 +2,7 @@ package cl.uchile.dcc.citric
 package model.panels
 
 import model.entities.PlayerCharacter
-import model.randomizer.RandomizedFactory
+import model.randomizer.{RandomPanelFactory, RandomizedFactory}
 
 import munit.FunSuite
 
@@ -17,9 +17,10 @@ class PanelTest extends FunSuite {
   private val attack = 1
   private val defense = 1
   private val evasion = 1
+  private val panelFactory = new RandomPanelFactory()
 
   override def beforeEach(context: BeforeEach): Unit = {
-    panel = new RandomizedFactory().randomPanel()
+    panel = panelFactory.create()
     character = new PlayerCharacter(
       name,
       maxHp,
@@ -38,7 +39,7 @@ class PanelTest extends FunSuite {
   }
 
   test("A panel's next panels can be added to"){
-    val nextPanel: Panel = new RandomizedFactory().randomPanel()
+    val nextPanel: Panel = panelFactory.create()
     panel.addNextPanel(nextPanel)
     assert(panel.nextPanels.contains(nextPanel))
   }
