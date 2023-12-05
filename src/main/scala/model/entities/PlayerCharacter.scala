@@ -3,6 +3,7 @@ package model.entities
 
 import model.norma.Norma
 import model.norma.kinds.Norma1
+import model.panels.Panel
 
 import scala.util.Random
 
@@ -55,6 +56,11 @@ class PlayerCharacter(protected val _name: String,
   with Player {
   private var _norma: Norma = new Norma1(startGoalType)
   private var _victories: Int = 0
+  private var _currentPanel: Panel = _
+
+  override def setPanel(panel: Panel): Unit = {
+    _currentPanel = panel
+  }
 
   override def name: String = _name
 
@@ -97,4 +103,17 @@ class PlayerCharacter(protected val _name: String,
   }
 
   override def defeatEnemy(enemy: Entity): Unit = enemy.defeatedByPlayer(this)
+
+  /** Makes the player roll a check to recover from being KO.
+   *
+   * @param difficulty The minimum value for passing the recovery check.
+   */
+  override def rollRecovery(difficulty: Int): Unit = {
+    val roll = rollDice()
+    if(roll >= difficulty){
+      addHp(maxHp)
+    }
+  }
+
+  override def currentPanel: Panel = _currentPanel
 }

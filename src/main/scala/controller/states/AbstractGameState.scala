@@ -3,11 +3,13 @@ package controller.states
 
 import controller.GameController
 import exceptions.InvalidStateTransitionException
-import model.entities.Player
+import model.entities.{Player, WildUnit}
 
 abstract class AbstractGameState(protected val stateName: String,
                                  protected val context: GameController
                                 ) extends GameState {
+
+  override def doAction(): Unit = {}
 
   override def getStateName: String = stateName
 
@@ -21,7 +23,9 @@ abstract class AbstractGameState(protected val stateName: String,
 
   override def endCombat(): Unit = invalidTransition("MainLoop")
 
-  override def startCombat(): Unit = invalidTransition("Combat")
+  override def startPlayerCombat(player: Player): Unit = invalidTransition("Combat")
+
+  override def startWildUnitCombat(wildUnit: WildUnit): Unit = invalidTransition("Combat")
 
   override def landOnPanel(): Unit = invalidTransition("PlayerPanel")
 

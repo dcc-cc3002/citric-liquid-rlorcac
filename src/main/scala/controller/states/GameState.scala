@@ -1,15 +1,20 @@
 package cl.uchile.dcc.citric
 package controller.states
 
-import model.entities.Player
+import model.entities.{Player, WildUnit}
 
+/**
+ *
+ */
 trait GameState {
   protected def getStateName: String
+  def doAction(): Unit
   def startGame(): Unit
   def newGame(): Unit
   def startTurn(player: Player): Unit
   def endCombat(): Unit
-  def startCombat(): Unit
+  def startPlayerCombat(player: Player): Unit
+  def startWildUnitCombat(wildUnit: WildUnit): Unit
   def landOnPanel(): Unit
   def startRecovery(): Unit
   def passRecovery(): Unit

@@ -1,10 +1,22 @@
 package cl.uchile.dcc.citric
 package model.entities
 
+import model.panels.Panel
+
 /** A representation of a Player, including things exclusive to Players. Should be used as a type instead of PlayerCharacter
  *
  */
 trait Player extends Entity {
+
+  def setPanel(panel: Panel): Unit
+  def currentPanel: Panel
+
+
+  /** Makes the player roll a check to recover from being KO.
+   *
+   * @param difficulty The minimum value for passing the recovery check.
+   */
+  def rollRecovery(difficulty: Int): Unit
 
   /** The name of the player. This is an identifier and should be unique.
    *
