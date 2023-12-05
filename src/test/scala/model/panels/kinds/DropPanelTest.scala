@@ -2,8 +2,8 @@ package cl.uchile.dcc.citric
 package model.panels.kinds
 
 import model.entities.{Player, PlayerCharacter}
-
 import model.panels.Panel
+
 import munit.FunSuite
 
 class DropPanelTest extends FunSuite {

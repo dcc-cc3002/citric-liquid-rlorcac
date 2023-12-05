@@ -1,7 +1,8 @@
 package cl.uchile.dcc.citric
 package model.entities
 
-import model.randomizer.{RandomWildUnitFactory, RandomizedFactory}
+import model.randomizer.RandomWildUnitFactory
+
 import munit.FunSuite
 
 import scala.util.Random

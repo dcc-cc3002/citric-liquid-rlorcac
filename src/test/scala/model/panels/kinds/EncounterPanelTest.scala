@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.panels.kinds
 
-import model.entities.{PlayerCharacter, WildUnit}
+import model.entities.PlayerCharacter
 
 import munit.FunSuite
 

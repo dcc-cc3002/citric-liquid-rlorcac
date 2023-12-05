@@ -3,6 +3,7 @@ package model.panels.kinds
 
 import model.entities.PlayerCharacter
 import model.panels.Panel
+
 import munit.FunSuite
 
 class NeutralPanelTest extends FunSuite {

@@ -2,8 +2,7 @@ package cl.uchile.dcc.citric
 package model.randomizer
 
 import model.panels.Panel
-
-import cl.uchile.dcc.citric.model.panels.factories.{BonusPanelFactory, DropPanelFactory, EncounterPanelFactory, NeutralPanelFactory}
+import model.panels.factories.{BonusPanelFactory, DropPanelFactory, EncounterPanelFactory, NeutralPanelFactory}
 
 import scala.util.Random
 

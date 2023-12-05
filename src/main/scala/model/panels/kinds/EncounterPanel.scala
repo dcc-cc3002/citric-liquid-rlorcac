@@ -3,7 +3,7 @@ package model.panels.kinds
 
 import model.entities.{Player, WildUnit}
 import model.panels.AbstractPanel
-import model.randomizer.{RandomWildUnitFactory, RandomizedFactory}
+import model.randomizer.RandomWildUnitFactory
 
 import scala.util.Random
 

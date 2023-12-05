@@ -2,7 +2,7 @@ package cl.uchile.dcc.citric
 package model.panels
 
 import model.entities.PlayerCharacter
-import model.randomizer.{RandomPanelFactory, RandomizedFactory}
+import model.randomizer.RandomPanelFactory
 
 import munit.FunSuite
 
