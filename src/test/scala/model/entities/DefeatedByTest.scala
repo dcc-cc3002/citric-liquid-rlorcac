@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.entities
 
-import cl.uchile.dcc.citric.model.randomizer.Randomize
+import cl.uchile.dcc.citric.model.randomizer.RandomizedFactory
 import munit.FunSuite
 
 import scala.util.Random
@@ -36,8 +36,8 @@ class DefeatedByTest extends FunSuite {
       "Stars",
       randomNumberGenerator
     )
-    wildUnit1 = new Randomize().randomUnit()
-    wildUnit2 = new Randomize().randomUnit()
+    wildUnit1 = new RandomizedFactory().randomUnit()
+    wildUnit2 = new RandomizedFactory().randomUnit()
   }
 
   test("Player defeated by Player"){

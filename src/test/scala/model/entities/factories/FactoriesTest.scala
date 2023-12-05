@@ -1,16 +1,19 @@
 package cl.uchile.dcc.citric
-package model.entities
+package model.entities.factories
 
-import model.entities.defaultEntities.{Chicken, RoboBall, Seagull}
+import model.entities.WildUnit
 
-class WildUnitTest extends munit.FunSuite {
+class FactoriesTest extends munit.FunSuite {
   private var chicken: WildUnit = _
   private var roboBall: WildUnit = _
   private var seagull: WildUnit = _
+  private val chickenFactory = new ChickenFactory()
+  private val seagullFactory = new SeagullFactory()
+  private val roboBallFactory = new RoboBallFactory()
   override def beforeEach(context: BeforeEach): Unit = {
-    chicken = new Chicken()
-    roboBall = new RoboBall()
-    seagull = new Seagull()
+    chicken = chickenFactory.create()
+    roboBall = roboBallFactory.create()
+    seagull = seagullFactory.create()
   }
   test("Chickens should start with 3 stars, full HP, 3 HP, -1 ATK, -1 DEF, and 1 EVA"){
     chicken.startTurn(1)

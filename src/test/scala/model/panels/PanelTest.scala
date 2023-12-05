@@ -2,7 +2,7 @@ package cl.uchile.dcc.citric
 package model.panels
 
 import model.entities.PlayerCharacter
-import model.randomizer.Randomize
+import model.randomizer.RandomizedFactory
 
 import munit.FunSuite
 
@@ -19,7 +19,7 @@ class PanelTest extends FunSuite {
   private val evasion = 1
 
   override def beforeEach(context: BeforeEach): Unit = {
-    panel = new Randomize().randomPanel()
+    panel = new RandomizedFactory().randomPanel()
     character = new PlayerCharacter(
       name,
       maxHp,
@@ -38,7 +38,7 @@ class PanelTest extends FunSuite {
   }
 
   test("A panel's next panels can be added to"){
-    val nextPanel: Panel = new Randomize().randomPanel()
+    val nextPanel: Panel = new RandomizedFactory().randomPanel()
     panel.addNextPanel(nextPanel)
     assert(panel.nextPanels.contains(nextPanel))
   }
@@ -46,7 +46,7 @@ class PanelTest extends FunSuite {
   test("A panel's next panels can be removed from") {
     val panels: ArrayBuffer[Panel] = ArrayBuffer()
     for(_ <- 1 to 10){
-      val nextPanel: Panel = new Randomize().randomPanel()
+      val nextPanel: Panel = new RandomizedFactory().randomPanel()
       panel.addNextPanel(nextPanel)
       panels.append(nextPanel)
     }

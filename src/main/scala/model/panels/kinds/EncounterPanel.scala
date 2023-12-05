@@ -3,7 +3,7 @@ package model.panels.kinds
 
 import model.entities.{Player, WildUnit}
 import model.panels.AbstractPanel
-import model.randomizer.Randomize
+import model.randomizer.RandomizedFactory
 
 /** Represents a panel where players fight a wild unit upon landing.
  *
@@ -16,7 +16,7 @@ class EncounterPanel extends AbstractPanel {
    */
   def activate(player: Player): Unit = {
     if(wildUnit.isEmpty){
-      wildUnit = Some(new Randomize().randomUnit())
+      wildUnit = Some(new RandomizedFactory().randomUnit())
     }
     // TODO: Combat goes here.
   }

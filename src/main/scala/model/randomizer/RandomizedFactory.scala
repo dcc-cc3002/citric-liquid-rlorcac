@@ -2,10 +2,10 @@ package cl.uchile.dcc.citric
 package model.randomizer
 
 import model.entities.WildUnit
-import model.entities.defaultEntities.{Chicken, RoboBall, Seagull}
-
-import model.panels.kinds.{BonusPanel, DropPanel, EncounterPanel, NeutralPanel}
+import model.entities.factories.{ChickenFactory, RoboBallFactory, SeagullFactory}
+import model.factories.Factory
 import model.panels.Panel
+import model.panels.kinds.{BonusPanel, DropPanel, EncounterPanel, NeutralPanel}
 
 import scala.util.Random
 
@@ -13,12 +13,12 @@ import scala.util.Random
  *
  * @param rng A source of randomness
  */
-class Randomize(private val rng: Random = new Random()) {
+class RandomizedFactory(private val rng: Random = new Random()) {
   /** Generates a random `WildUnit`
    *
    * @return A new, completely random `WildUnit`.
    */
-  def randomUnit(): WildUnit = getWildUnitList(rng.nextInt(getWildUnitList.length))
+  def randomUnit(): WildUnit = getWildUnitFactoryList(rng.nextInt(getWildUnitFactoryList.length)).create()
 
   /** Generates a random `Panel`
    *
@@ -28,9 +28,9 @@ class Randomize(private val rng: Random = new Random()) {
 
   /**
    *
-   * @return A list containing all `WildUnit`s this object can return via `randomUnit()`
+   * @return A list containing all `WildUnit` Factories this object can use to create a random `WildUnit`
    */
-  def getWildUnitList: List[WildUnit] = List(new RoboBall(), new Seagull(), new Chicken())
+  def getWildUnitFactoryList: List[Factory[WildUnit]] = List(new RoboBallFactory(), new SeagullFactory(), new ChickenFactory())
 
   /**
    *
