@@ -2,7 +2,6 @@ package cl.uchile.dcc.citric
 package controller.states
 
 import model.entities.Player
-import model.panels.Panel
 
 trait GameState {
   protected def getStateName: String
