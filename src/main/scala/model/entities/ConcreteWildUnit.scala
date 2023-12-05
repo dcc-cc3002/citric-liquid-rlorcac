@@ -9,7 +9,7 @@ package model.entities
  * @param evasion The wild unit's skill to completely avoid certain attacks.
  * @param stars The amount of stars the wild unit starts with.
  */
-abstract class AbstractWildUnit(maxHp: Int,
+class ConcreteWildUnit(maxHp: Int,
                                 attack: Int,
                                 defense: Int,
                                 evasion: Int,
