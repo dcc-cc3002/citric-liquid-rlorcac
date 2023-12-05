@@ -11,7 +11,7 @@ import scala.util.Random
  * @param rng A source of randomness.
  * @tparam T The type of output the factory creates. Factory should be covariant relative to T.
  */
-abstract class RandomFactory[T](private val factoryList: List[Factory[T]],
+abstract class RandomFactory[T](val factoryList: List[Factory[T]],
                                 private val rng: Random) extends Factory[T] {
   override def create(): T = factoryList(rng.nextInt(factoryList.length)).create()
 }
