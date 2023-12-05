@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model.factories
+package utils.factories
 
 /** A factory that creates objects of type T.
  *
