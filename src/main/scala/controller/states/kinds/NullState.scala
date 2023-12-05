@@ -1,9 +1,8 @@
 package cl.uchile.dcc.citric
 package controller.states.kinds
 
+import controller.GameController
 import controller.states.AbstractGameState
-
-import cl.uchile.dcc.citric.controller.GameController
 
 /** Every transition from this state fails for testing purposes.
  *
