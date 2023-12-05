@@ -1,6 +1,7 @@
 package cl.uchile.dcc.citric
 package model.entities
 
+import model.entities.kinds.{Chicken, RoboBall, Seagull}
 import model.randomizer.RandomWildUnitFactory
 
 import munit.FunSuite
@@ -20,6 +21,9 @@ class DefeatEnemyTest extends FunSuite {
   private val defense = 1
   private val evasion = 1
   private val wildUnitFactory = new RandomWildUnitFactory()
+  private var chicken: Chicken = _
+  private var roboBall: RoboBall = _
+  private var seagull: Seagull = _
   override def beforeEach(context: BeforeEach): Unit = {
     randomNumberGenerator = new Random(13)
     player1 = new PlayerCharacter(name1,
@@ -40,6 +44,9 @@ class DefeatEnemyTest extends FunSuite {
     )
     wildUnit1 = wildUnitFactory.create()
     wildUnit2 = wildUnitFactory.create()
+    chicken = new Chicken()
+    roboBall = new RoboBall()
+    seagull = new Seagull()
   }
 
   test("Player defeated by Player"){
@@ -79,5 +86,23 @@ class DefeatEnemyTest extends FunSuite {
     wildUnit1.defeatEnemy(wildUnit2)
     assertEquals(wildUnit1.stars, originalStars1)
     assertEquals(wildUnit2.stars, originalStars2)
+  }
+
+  test("Chicken adds 3 stars"){
+    val originalStars = player1.stars
+    player1.defeatEnemy(chicken)
+    assertEquals(player1.stars, originalStars+3)
+  }
+
+  test("RoboBall adds 2 stars") {
+    val originalStars = player1.stars
+    player1.defeatEnemy(roboBall)
+    assertEquals(player1.stars, originalStars + 2)
+  }
+
+  test("Seagull adds 2 stars") {
+    val originalStars = player1.stars
+    player1.defeatEnemy(seagull)
+    assertEquals(player1.stars, originalStars + 2)
   }
 }
