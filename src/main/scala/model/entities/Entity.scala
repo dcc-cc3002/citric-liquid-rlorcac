@@ -88,31 +88,37 @@ trait Entity {
   /** Used when the `Entity` chooses to defend from another `Entity`'s attack
    * Deducts the HP caused by the attack after defense is applied
    *
-   * @param atkRoll The attack roll the entity has chosen to defend against
+   * @param atkRoll The attack roll the `Entity` has chosen to defend against
    */
   def defendRoll(atkRoll: Int): Unit
 
   /** Used when the `Entity` chooses to evade another `Entity`'s attack
    *
-   * @param atkRoll The attack roll the entity has chosen to evade
+   * @param atkRoll The attack roll the `Entity` has chosen to evade
    */
   def evadeRoll(atkRoll: Int): Unit
 
   /**
    *
-   * @return The amount of victories the Entity gives when defeated
+   * @return The amount of victories the `Entity` gives when defeated
    */
   def givesVictories: Int
 
-  /** Processes the logic for this entity being defeated by a Player
+  /** Processes the logic for this `Entity` being defeated by a Player
    *
    * @param player The player that defeated this entity
    */
-  def defeatedBy(player: Player): Unit
+  def defeatedByPlayer(player: Player): Unit
 
-  /** Processes the logic for this entity being defeated by a Wild Unit
+  /** Processes the logic for this `Entity` being defeated by a Wild Unit
    *
    * @param wildUnit The Wild Unit that defeated this entity
    */
-  def defeatedBy(wildUnit: WildUnit): Unit
+  def defeatedByWildUnit(wildUnit: WildUnit): Unit
+
+  /** Processes the logic for `this` defeating `enemy`.
+   *
+   * @param enemy The `Entity` this `Entity` has defeated.
+   */
+  def defeatEnemy(enemy: Entity): Unit
 }

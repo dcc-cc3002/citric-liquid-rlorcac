@@ -83,16 +83,18 @@ class PlayerCharacter(protected val _name: String,
     default
   }
 
-  override def defeatedBy(player: Player): Unit = {
+  override def defeatedByPlayer(player: Player): Unit = {
     val starsToGive: Int = stars/2
     deductStars(starsToGive)
     player.addStars(starsToGive)
     player.addVictories(givesVictories)
   }
 
-  override def defeatedBy(wildUnit: WildUnit): Unit = {
+  override def defeatedByWildUnit(wildUnit: WildUnit): Unit = {
     val starsToGive: Int = stars / 2
     deductStars(starsToGive)
     wildUnit.addStars(starsToGive)
   }
+
+  override def defeatEnemy(enemy: Entity): Unit = enemy.defeatedByPlayer(this)
 }

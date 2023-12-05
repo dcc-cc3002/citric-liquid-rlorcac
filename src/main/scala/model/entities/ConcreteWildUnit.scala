@@ -24,13 +24,15 @@ class ConcreteWildUnit(maxHp: Int,
 
   override def givesVictories: Int = 1
 
-  override def defeatedBy(wildUnit: WildUnit): Unit = {
+  override def defeatedByWildUnit(wildUnit: WildUnit): Unit = {
     // do nothing
   }
 
-  override def defeatedBy(player: Player): Unit = {
+  override def defeatedByPlayer(player: Player): Unit = {
     player.addStars(stars)
     player.addVictories(givesVictories)
     deductStars(stars)
   }
+
+  override def defeatEnemy(enemy: Entity): Unit = enemy.defeatedByWildUnit(this)
 }
