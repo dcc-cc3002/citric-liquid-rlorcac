@@ -90,15 +90,15 @@ trait Entity {
   /** Used when the `Entity` chooses to defend from another `Entity`'s attack
    * Deducts the HP caused by the attack after defense is applied
    *
-   * @param atkRoll The attack roll the `Entity` has chosen to defend against
+   * @param attacker The `Entity` whose attack this `Entity` has chosen to defend from.
    */
-  def defendRoll(atkRoll: Int): Unit
+  def defendRoll(attacker: Entity): Unit
 
   /** Used when the `Entity` chooses to evade another `Entity`'s attack
    *
-   * @param atkRoll The attack roll the `Entity` has chosen to evade
+   * @param attacker The `Entity` whose attack this `Entity` has chosen to evade.
    */
-  def evadeRoll(atkRoll: Int): Unit
+  def evadeRoll(attacker: Entity): Unit
 
   /**
    *

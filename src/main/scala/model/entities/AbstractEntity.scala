@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
 package model.entities
 
+import controller.GameController
+
 import scala.util.Random
 
 /** An abstract representation of all the units in the game, covering both players and
@@ -22,6 +24,13 @@ abstract class AbstractEntity(protected val _maxHp: Int,
                               protected val randomNumberGenerator: Random = new Random()
                              ) extends Entity {
   private var _currentHp: Int = maxHp
+
+  private var _controller: GameController = _
+
+  override def setController(controller: GameController): Unit = {
+    _controller = controller
+  }
+
   override def rollDice(): Int = {
     randomNumberGenerator.nextInt(6) + 1
   }
@@ -79,17 +88,21 @@ abstract class AbstractEntity(protected val _maxHp: Int,
     originalHp - currentHp
   }
 
-  override def attackRoll: Int = rollDice() + attack
+  override def attackRoll: Int = if (currentHp > 0) rollDice() + attack else 0
 
-  override def defendRoll(atkRoll: Int): Unit = {
+  override def defendRoll(attacker: Entity): Unit = {
+    val atkRoll = attacker.attackRoll
     val defRoll = rollDice() + defense
     val subtract = 1.max(atkRoll - defRoll)
     deductHp(subtract)
   }
 
-  override def evadeRoll(atkRoll: Int): Unit = {
+  override def evadeRoll(attacker: Entity): Unit = {
+    val atkRoll = attacker.attackRoll
     val evaRoll = rollDice() + evasion
     val subtract = if(evaRoll > atkRoll) 0 else atkRoll
     deductHp(subtract)
   }
+
+  override def getContext: GameController = _controller
 }
