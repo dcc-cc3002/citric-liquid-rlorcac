@@ -1,8 +1,8 @@
 package cl.uchile.dcc.citric
-package controller.states.kinds
+package controller.states
 
 import controller.GameController
-import controller.states.GameState
+import controller.states.kinds.{EndGame, NullState, PlayerCombat, Recovery}
 import exceptions.InvalidStateTransitionException
 import model.entities.{Player, PlayerCharacter, WildUnit}
 import model.randomizer.RandomWildUnitFactory
@@ -70,6 +70,7 @@ class GameStateTest extends FunSuite {
     controller = new GameController(List(player1, player2, player3, player4), 1)
     wildUnit = new RandomWildUnitFactory().create()
   }
+
   test("NullState test"){
     state = new NullState(controller)
     controller.setState(state)
@@ -89,9 +90,29 @@ class GameStateTest extends FunSuite {
     state.doAction()
     assertEquals(state.getStateName, "NullState")
   }
+
   test("Recovery State test"){
     player1.deductHp(player1.maxHp)
     state = new Recovery(controller, player1)
     assert(List(0, player1.maxHp).contains(player1.currentHp))
+    state = new Recovery(controller, player1)
+    state.passRecovery()
+    assertEquals(controller.state.getStateName, "PlayerTurn")
+    state = new Recovery(controller, player1)
+    state.failRecovery()
+    assertEquals(controller.state.getStateName, "MainLoop")
+  }
+
+  test("EndGame State test"){
+    state = new EndGame(controller)
+    state.newGame()
+    assertEquals(controller.state.getStateName, "PreGame")
+    controller.startGame()
+  }
+
+  test("PlayerCombat State test"){
+    state = new PlayerCombat(controller, player1, player2)
+    state.combatRound()
+
   }
 }
