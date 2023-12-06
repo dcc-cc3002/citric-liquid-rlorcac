@@ -2,7 +2,7 @@ package cl.uchile.dcc.citric
 package model.entities.factories
 
 import model.entities.kinds.Seagull
-import model.factories.Factory
+import utils.factories.Factory
 
 /** A factory for Seagull entities. Creates Seagulls with the same attributes every time.
  *

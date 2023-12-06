@@ -2,7 +2,7 @@ package cl.uchile.dcc.citric
 package model.entities.factories
 
 import model.entities.kinds.RoboBall
-import model.factories.Factory
+import utils.factories.Factory
 
 /** A factory for RoboBall entities. Creates RoboBalls with the same attributes every time.
  *
