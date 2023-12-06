@@ -2,7 +2,7 @@ package cl.uchile.dcc.citric
 package controller.states
 
 import controller.GameController
-import controller.states.kinds.{EndGame, NullState, PlayerCombat, Recovery}
+import controller.states.kinds._
 import exceptions.InvalidStateTransitionException
 import model.entities.{Player, PlayerCharacter, WildUnit}
 import model.randomizer.RandomWildUnitFactory
@@ -17,7 +17,7 @@ class GameStateTest extends FunSuite {
   private val name2 = "testPlayer2"
   private val name3 = "testPlayer3"
   private val name4 = "testPlayer4"
-  private val maxHp = 10
+  private val maxHp = 1
   private val attack = 1
   private val defense = 1
   private val evasion = 1
@@ -87,7 +87,7 @@ class GameStateTest extends FunSuite {
     Assert.assertThrows(classOf[InvalidStateTransitionException], () => state.newGame())
     Assert.assertThrows(classOf[InvalidStateTransitionException], () => state.endCombat())
     Assert.assertThrows(classOf[InvalidStateTransitionException], () => state.landOnPanel())
-    state.doAction()
+    Assert.assertThrows(classOf[InvalidStateTransitionException], () => state.combatRound())
     assertEquals(state.getStateName, "NullState")
   }
 
@@ -112,7 +112,44 @@ class GameStateTest extends FunSuite {
 
   test("PlayerCombat State test"){
     state = new PlayerCombat(controller, player1, player2)
+    for(_ <- 1 to 10){
+      state.combatRound()
+    }
+    assert(List(player1, player2).map(x => x.currentHp).contains(0))
+    player2.addHp(player2.maxHp)
+    player1.deductHp(player1.maxHp)
     state.combatRound()
+    assertEquals(player2.currentHp, player2.maxHp)
+    assertEquals(player1.currentHp, 0)
+    player1.addHp(player1.maxHp)
+    player2.deductHp(player2.maxHp)
+    state.combatRound()
+    assertEquals(player2.currentHp, 0)
+    assertEquals(player1.currentHp, player1.maxHp)
+  }
+
+  test("WildUnitCombat State test"){
+    state = new WildUnitCombat(controller, player1, wildUnit)
+    for (_ <- 1 to 10) {
+      state.combatRound()
+    }
+    assert(List(player1, wildUnit).map(x => x.currentHp).contains(0))
+    wildUnit.addHp(wildUnit.maxHp)
+    player1.deductHp(player1.maxHp)
+    state.combatRound()
+    assertEquals(wildUnit.currentHp, wildUnit.maxHp)
+    assertEquals(player1.currentHp, 0)
+    player1.addHp(player1.maxHp)
+    wildUnit.deductHp(wildUnit.maxHp)
+    state.combatRound()
+    assertEquals(wildUnit.currentHp, 0)
+    assertEquals(player1.currentHp, player1.maxHp)
+  }
+
+  test("PlayerTurn State test"){
+    state = new PlayerTurn(controller, player1)
+    state.startRecovery()
+    assertEquals(controller.state.getStateName, "Recovery")
 
   }
 }
