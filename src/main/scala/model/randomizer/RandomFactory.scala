@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.randomizer
 
-import model.factories.Factory
+import utils.factories.Factory
 
 import scala.util.Random
 
