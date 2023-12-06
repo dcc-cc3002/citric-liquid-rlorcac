@@ -26,11 +26,17 @@ class BonusPanelTest extends munit.FunSuite {
       "Stars"
     )
   }
+
   test("Landing on a Bonus Panel should add stars"){
     assertEquals(character.stars, 0)
     panel.addCharacter(character)
     assertNotEquals(character.stars, 0)
   }
+
+  test("BonusPanel should have no WildUnit"){
+    assertEquals(panel.getWildUnit, None)
+  }
+
   test("Factory | Landing on a Bonus Panel should add stars") {
     panel = factory.create()
     assertEquals(character.stars, 0)

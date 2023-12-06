@@ -71,7 +71,6 @@ class DefeatEnemyTest extends FunSuite {
   test("Wild Unit defeated by Player"){
     player1.addStars(2)
     val originalStars = wildUnit1.stars
-    println(originalStars)
     player1.defeatEnemy(wildUnit1)
     assertEquals(player1.stars, 2 + originalStars)
     assertEquals(player1.victories, 1)

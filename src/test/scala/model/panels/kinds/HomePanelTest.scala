@@ -40,4 +40,8 @@ class HomePanelTest extends FunSuite {
     panel.addCharacter(character)
     assertEquals(character.norma, originalNorma + 1)
   }
+
+  test("HomePanel should have no WildUnit") {
+    assertEquals(panel.getWildUnit, None)
+  }
 }

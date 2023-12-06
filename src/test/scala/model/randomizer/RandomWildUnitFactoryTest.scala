@@ -24,5 +24,4 @@ class RandomWildUnitFactoryTest extends FunSuite {
       assertNotEquals(rand.create(), rand.create())
     }
   }
-
 }

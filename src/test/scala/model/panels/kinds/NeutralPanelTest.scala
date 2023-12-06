@@ -38,6 +38,10 @@ class NeutralPanelTest extends FunSuite {
     assertEquals(character, original)
   }
 
+  test("NeutralPanel should have no WildUnit") {
+    assertEquals(panel.getWildUnit, None)
+  }
+
   test("Factory | Landing on a Neutral Panel should do nothing") {
     // This test is probably wrong
     panel = factory.create()

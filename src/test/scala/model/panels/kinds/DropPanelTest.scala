@@ -36,6 +36,10 @@ class DropPanelTest extends FunSuite {
     assertNotEquals(character.stars, 30)
   }
 
+  test("DropPanel should have no WildUnit") {
+    assertEquals(panel.getWildUnit, None)
+  }
+
   test("Factory | Landing on a Drop Panel should take away stars") {
     panel = factory.create()
     character.addStars(30)
