@@ -15,8 +15,9 @@ trait Player extends Entity {
   /** Makes the player roll a check to recover from being KO.
    *
    * @param difficulty The minimum value for passing the recovery check.
+   * @return Whether the roll passed or not.
    */
-  def rollRecovery(difficulty: Int): Unit
+  def rollRecovery(difficulty: Int): Boolean
 
   /** The name of the player. This is an identifier and should be unique.
    *

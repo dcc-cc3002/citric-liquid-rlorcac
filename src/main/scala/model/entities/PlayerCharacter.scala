@@ -84,9 +84,16 @@ class PlayerCharacter(protected val _name: String,
     _norma = _norma.check(stars, victories, nextLevelGoal)
   }
 
-  def setGoal(default: String = "Stars"): String = {
-    // TODO: Goal-setting logic from the controller.
-    default
+  def setGoal(default: String): String = {
+    try{
+      val possible = List("Stars", "Victories")
+      possible(getContext.getInput(possible))
+    }
+    catch{
+      case e: Exception => {
+        default
+      }
+    }
   }
 
   override def defeatedByPlayer(player: Player): Unit = {
@@ -108,10 +115,12 @@ class PlayerCharacter(protected val _name: String,
    *
    * @param difficulty The minimum value for passing the recovery check.
    */
-  override def rollRecovery(difficulty: Int): Unit = {
-    if(rollDice() >= difficulty){
+  override def rollRecovery(difficulty: Int): Boolean = {
+    val passed: Boolean = rollDice() >= difficulty
+    if(passed){
       addHp(maxHp)
     }
+    passed
   }
 
   override def currentPanel: Panel = _currentPanel
