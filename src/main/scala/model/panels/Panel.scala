@@ -1,5 +1,7 @@
 package cl.uchile.dcc.citric
-package model
+package model.panels
+
+import model.entities.{Player, WildUnit}
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -12,16 +14,24 @@ import scala.collection.mutable.ArrayBuffer
   * structures.
   *
   * @author [[https://github.com/r8vnhill Ignacio Slater M.]]
-  * @author [[https://github.com/YOUR-USERNAME YOUR NAME]]
+  * @author [[https://github.com/rlorcac Raimundo Lorca C.]]
   */
 trait Panel {
+  /** An identifier for the panel.
+   *
+   * @return A string to be used as an identifier for the panel.
+   */
+  def name: String
+  def getWildUnit: Option[WildUnit]
 
   /** Array of the characters currently positioned on this panel.
-    *
-    * In the game, multiple characters might be on the same panel at once, e.g., if multiple players
-    * land on the same space.
-    */
-  val characters: ArrayBuffer[PlayerCharacter]
+   *
+   * In the game, multiple characters might be on the same panel at once, e.g., if multiple players
+   * land on the same space.
+   *
+   * @return A list containing all players currently in the `Panel`
+   */
+  def characters: ArrayBuffer[Player]
 
   /** An array of panels that are directly connected to this one.
    *
@@ -30,7 +40,7 @@ trait Panel {
    *
    * @return a List of Panel instances that are adjacent or connected to this panel.
    */
-  var nextPanels: ArrayBuffer[Panel]
+  def nextPanels: ArrayBuffer[Panel]
 
   /** Adds a character to the list of characters currently on this panel.
     *
@@ -38,7 +48,7 @@ trait Panel {
     *
     * @param player The player character to add to this panel.
     */
-  def addCharacter(player: PlayerCharacter): Unit
+  def addCharacter(player: Player): Unit
 
   /** Removes a character from the list of characters currently on this panel.
     *
@@ -46,5 +56,24 @@ trait Panel {
     *
     * @param player The player character to remove from this panel.
     */
-  def removeCharacter(player: PlayerCharacter): Unit
+  def removeCharacter(player: Player): Unit
+
+  /** To be called when a `PlayerCharacter` lands on a `Panel`
+   *
+   * @param player The `PlayerCharacter` that landed on the `Panel`
+   */
+  def activate(player: Player): Unit
+
+  /** Adds a `Panel` to `nextPanels`
+   *
+   * @param panel a `Panel` to add to this `Panel`'s `nextPanels`
+   */
+  def addNextPanel(panel: Panel): Unit
+
+  /** Removes a `Panel` from `nextPanels`
+   *
+   * @param panel a `Panel` to remove from this `Panel`'s `nextPanels`
+   */
+  def removeNextPanel(panel: Panel): Unit
+
 }
