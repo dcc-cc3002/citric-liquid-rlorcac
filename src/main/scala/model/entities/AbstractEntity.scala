@@ -92,6 +92,7 @@ abstract class AbstractEntity(protected val _maxHp: Int,
 
   override def defendRoll(attacker: Entity): Unit = {
     val atkRoll = attacker.attackRoll
+    if(atkRoll == 0) return
     val defRoll = rollDice() + defense
     val subtract = 1.max(atkRoll - defRoll)
     deductHp(subtract)

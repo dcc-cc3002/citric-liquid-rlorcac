@@ -3,13 +3,11 @@ package controller.states
 
 import model.entities.{Player, WildUnit}
 
-/**
+/** A representation of the possible logical game states that may be reached.
  *
  */
 trait GameState {
   def getStateName: String
-
-  def doAction(): Unit
 
   def startGame(): Unit
 

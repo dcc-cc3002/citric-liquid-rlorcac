@@ -7,6 +7,12 @@ import model.entities.{Player, WildUnit}
 
 import scala.util.Random
 
+/** A state for controlling combat between a player and a wild unit.
+ *
+ * @param controller The controller this state belongs to.
+ * @param initiator The player that started the combat.
+ * @param receiver The wild unit the player is going to fight.
+ */
 class WildUnitCombat(controller: GameController, initiator: Player, receiver: WildUnit) extends AbstractGameState("WildUnitCombat", controller) {
   override def combatRound(): Unit = {
     if (Random.nextInt(1) == 0) receiver.evadeRoll(initiator) else receiver.defendRoll(initiator)

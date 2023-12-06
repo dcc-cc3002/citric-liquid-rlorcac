@@ -6,6 +6,12 @@ import controller.states.AbstractGameState
 import model.entities.{Player, WildUnit}
 import model.panels.Panel
 
+/** A state that controls a players' landing on a panel and starting fights.
+ *
+ * @param controller The controller this state belongs to.
+ * @param player The player landing on a panel.
+ * @param panel The panel the player lands on.
+ */
 class PlayerPanel(controller: GameController, player: Player, panel: Panel) extends AbstractGameState("PlayerPanel", controller) {
   panel.addCharacter(player)
 

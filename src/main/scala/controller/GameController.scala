@@ -22,7 +22,7 @@ class GameController(private var players: List[Player], size: Int) {
   private var _chapter: Int = 1
   val board: Board = new Board(players, size)
   var state: GameState = new PreGame(this)
-  var gameOver: Boolean = false
+  private var gameOver: Boolean = false
 
   /** Chooses from a list of options at random.
    *
@@ -35,7 +35,7 @@ class GameController(private var players: List[Player], size: Int) {
 
   /** Gives the current chapter number for the running game.
    *
-   * @return
+   * @return The current chapter number.
    */
   def chapter: Int = _chapter
 
@@ -88,20 +88,25 @@ class GameController(private var players: List[Player], size: Int) {
     }
   }
 
-  def turn(): Unit = {
+  /** Runs one turn of the game for all players.
+   *
+   * @return True if the turn was executed with no problem, False otherwise.
+   */
+  def turn(): Boolean = {
+    var success: Boolean = true
     for(player <- players){
       try{
         playerTurn(player)
       }
       catch{
         case e: InvalidStateTransitionException => {
-          println(e.getMessage + ", skipping turn")
+          println(e.getMessage + " Skipping turn.")
+          success = false
         }
       }
-      finally{
-        setState(new MainLoop(this))
-      }
+      finally setState(new MainLoop(this))
     }
-    _chapter += 1
+    _chapter = _chapter + 1
+    success
   }
 }

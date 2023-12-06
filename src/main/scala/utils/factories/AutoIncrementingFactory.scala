@@ -13,7 +13,7 @@ abstract class AutoIncrementingFactory[T](start: Int) extends Factory[T] {
    * @return The next value in the sequence
    */
   def next: Int = {
-    value += 1
+    value = value + 1
     value
   }
 }

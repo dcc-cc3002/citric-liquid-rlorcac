@@ -6,6 +6,11 @@ import controller.states.AbstractGameState
 import model.entities.Player
 import model.panels.Panel
 
+/** A state that controls players' movement on the board.
+ *
+ * @param controller The controller this state belongs to.
+ * @param player The player that is to move to another panel.
+ */
 class PlayerMovement(controller: GameController, player: Player) extends AbstractGameState("PlayerMovement", controller) {
   private val movementAmount: Int = player.rollDice()
 

@@ -5,11 +5,14 @@ import controller.GameController
 import exceptions.InvalidStateTransitionException
 import model.entities.{Player, WildUnit}
 
+/** An abstract representation of all possible logical states of the game.
+ *
+ * @param stateName A name for the state, used _exclusively_ for debugging.
+ * @param context The Game Controller this state is used in.
+ */
 abstract class AbstractGameState(protected val stateName: String,
                                  protected val context: GameController
                                 ) extends GameState {
-
-  override def doAction(): Unit = {}
 
   override def getStateName: String = stateName
 
@@ -39,5 +42,5 @@ abstract class AbstractGameState(protected val stateName: String,
 
   override def endTurn(): Unit = invalidTransition("MainLoop")
 
-  override def combatRound(): Unit = {}
+  override def combatRound(): Unit = invalidTransition("CombatRound")
 }

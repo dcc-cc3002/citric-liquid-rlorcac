@@ -8,8 +8,16 @@ import model.panels.Panel
  */
 trait Player extends Entity {
 
+  /** Changes the player's current panel.
+   *
+   * @param panel The new panel the `Player` is on.
+   */
   def setPanel(panel: Panel): Unit
 
+  /**
+   *
+   * @return The panel the player is currently on.
+   */
   def currentPanel: Panel
 
   /** Makes the player roll a check to recover from being KO.

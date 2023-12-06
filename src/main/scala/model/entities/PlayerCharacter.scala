@@ -111,10 +111,6 @@ class PlayerCharacter(protected val _name: String,
 
   override def defeatEnemy(enemy: Entity): Unit = enemy.defeatedByPlayer(this)
 
-  /** Makes the player roll a check to recover from being KO.
-   *
-   * @param difficulty The minimum value for passing the recovery check.
-   */
   override def rollRecovery(difficulty: Int): Boolean = {
     val passed: Boolean = rollDice() >= difficulty
     if(passed){
@@ -130,7 +126,7 @@ class PlayerCharacter(protected val _name: String,
       getContext.endGame(this)
     }
     catch{
-      case e: Exception => {} // ignore the exception, this would only happen in testing when a player has no controller set.
+      case e: Exception =>  // ignore the exception, this would only happen in testing when a player has no controller set.
     }
   }
 }
