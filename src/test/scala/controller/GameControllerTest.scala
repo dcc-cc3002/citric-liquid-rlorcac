@@ -25,7 +25,6 @@ class GameControllerTest extends FunSuite {
   private var player3: Player = _
   private var player4: Player = _
   private var controller: GameController = _
-  private var state: GameState = _
   private var wildUnit: WildUnit = _
 
   override def beforeEach(context: BeforeEach): Unit = {
@@ -74,6 +73,7 @@ class GameControllerTest extends FunSuite {
     controller.startGame()
     assertEquals(controller.state.getStateName, "MainLoop")
   }
+
   test("One player's turn"){
     assertEquals(controller.state.getStateName, "PreGame")
     controller.startGame()
@@ -82,10 +82,21 @@ class GameControllerTest extends FunSuite {
     assertEquals(controller.state.getStateName, "MainLoop")
   }
 
+  test("One player's turn but it starts with no Hp, run multiple times") {
+    assertEquals(controller.state.getStateName, "PreGame")
+    controller.startGame()
+    for(_ <- 1 to 10) {
+      assertEquals(controller.state.getStateName, "MainLoop")
+      player1.deductHp(player1.maxHp)
+      controller.playerTurn(player1)
+    }
+    assertEquals(controller.state.getStateName, "MainLoop")
+  }
+
   test("One player, multiple turns") {
     assertEquals(controller.state.getStateName, "PreGame")
     controller.startGame()
-    for(i <- 1 to 10){
+    for(_ <- 1 to 10){
       assertEquals(controller.state.getStateName, "MainLoop")
       controller.playerTurn(player1)
     }
@@ -99,12 +110,17 @@ class GameControllerTest extends FunSuite {
     assertEquals(controller.state.getStateName, "MainLoop")
   }
 
-  test("Multiple players, multiple turns"){
+  test("Multiple players, multiple turns, checks chapter counter"){
     assertEquals(controller.state.getStateName, "PreGame")
     controller.startGame()
     for(i <- 1 to 10){
+      assertEquals(controller.chapter, i)
       controller.turn()
     }
     assertEquals(controller.state.getStateName, "MainLoop")
+  }
+
+  test("Forced failure of the try-catch clause"){
+    assertEquals(controller.turn(), false) // fails because the controller starts at the pregame state, and can't enter players' turns from there.
   }
 }
