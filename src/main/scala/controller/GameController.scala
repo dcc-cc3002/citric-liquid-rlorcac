@@ -104,13 +104,4 @@ class GameController(private var players: List[Player], size: Int) {
     }
     _chapter += 1
   }
-
-  /** Makes the game loop until a player wins
-   *
-   */
-  def loop(): Unit = {
-    while(!gameOver){
-      turn()
-    }
-  }
 }
