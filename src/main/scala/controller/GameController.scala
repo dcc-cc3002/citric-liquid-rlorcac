@@ -2,7 +2,7 @@ package cl.uchile.dcc.citric
 package controller
 
 import controller.states.GameState
-import controller.states.kinds.{EndGame, PreGame}
+import controller.states.kinds.{EndGame, MainLoop, PreGame}
 import exceptions.InvalidStateTransitionException
 import model.entities.Player
 import model.panels.Board
@@ -60,19 +60,30 @@ class GameController(private var players: List[Player], size: Int) {
 
   def playerTurn(player: Player): Unit = {
     state.startTurn(player)
-    var enteredRecovery: Boolean = false
-    if(player.currentHp == 0){
-      enteredRecovery = true
+    if(player.currentHp == 0) {
       state.startRecovery()
+      if (player.currentHp != 0) {
+        state.passRecovery()
+      }
+      else {
+        state.failRecovery()
+        return
+      }
     }
-    if(player.currentHp == 0){
-      state.failRecovery()
+    state.rollDie()
+    state.landOnPanel()
+    if(player.currentPanel.getWildUnit.nonEmpty){
+      state.startWildUnitCombat(player.currentPanel.getWildUnit.get)
+      state.endCombat()
     }
-    else{
-      if(enteredRecovery) state.passRecovery()
-      state.rollDie()
-      if (player.currentPanel.getWildUnit.nonEmpty) {
-        state.startWildUnitCombat(player.currentPanel.getWildUnit.get)
+    else {
+      val otherLivingPlayers = player.currentPanel.characters.filter(x => x != player).filter(x => x.currentHp > 0)
+      if (otherLivingPlayers.nonEmpty) {
+        state.startPlayerCombat(otherLivingPlayers(0))
+        state.endCombat()
+      }
+      else{
+        state.endTurn()
       }
     }
   }
@@ -83,10 +94,12 @@ class GameController(private var players: List[Player], size: Int) {
         playerTurn(player)
       }
       catch{
-        case e: InvalidStateTransitionException => println(e.getMessage + ", skipping turn")
+        case e: InvalidStateTransitionException => {
+          println(e.getMessage + ", skipping turn")
+        }
       }
       finally{
-
+        setState(new MainLoop(this))
       }
     }
     _chapter += 1
