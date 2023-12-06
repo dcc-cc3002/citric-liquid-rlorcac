@@ -7,7 +7,7 @@ import model.panels.AbstractPanel
 /** Represents a panel that does nothing when a player lands on it.
  *
  */
-class NeutralPanel extends AbstractPanel {
+class NeutralPanel(id: Int = 0) extends AbstractPanel(id, "Bonus Panel"){
   /** To be called when a `PlayerCharacter` lands on a `Panel`
    *
    * In the case of a `NeutralPanel`, it does nothing

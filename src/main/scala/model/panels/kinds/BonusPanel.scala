@@ -7,7 +7,7 @@ import model.panels.AbstractPanel
 /** Represents a panel where players gain stars upon landing.
  *
  */
-class BonusPanel extends AbstractPanel {
+class BonusPanel(id: Int = 0) extends AbstractPanel(id, "Bonus Panel") {
   /** To be called when a `PlayerCharacter` lands on a `Panel`
    *
    * @param player The `PlayerCharacter` that landed on the `Panel`

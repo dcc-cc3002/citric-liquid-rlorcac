@@ -10,7 +10,7 @@ import scala.util.Random
 /** Represents a panel where players fight a wild unit upon landing.
  *
  */
-class EncounterPanel extends AbstractPanel {
+class EncounterPanel(id: Int = 0) extends AbstractPanel(id, "Encounter Panel"){
   private var wildUnit: Option[WildUnit] = None
   private val wildUnitFactory: RandomWildUnitFactory = new RandomWildUnitFactory(new Random())
   /** To be called when a `PlayerCharacter` lands on a `Panel`

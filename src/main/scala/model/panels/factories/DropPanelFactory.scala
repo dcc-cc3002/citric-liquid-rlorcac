@@ -1,9 +1,9 @@
 package cl.uchile.dcc.citric
 package model.panels.factories
 
-import model.factories.Factory
 import model.panels.kinds.DropPanel
+import utils.factories.AutoIncrementingFactory
 
-class DropPanelFactory extends Factory[DropPanel]{
-  override def create(): DropPanel = new DropPanel()
+class DropPanelFactory extends AutoIncrementingFactory[DropPanel](0) {
+  override def create(): DropPanel = new DropPanel(next)
 }

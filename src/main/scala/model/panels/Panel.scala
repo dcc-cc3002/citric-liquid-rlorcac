@@ -17,8 +17,12 @@ import scala.collection.mutable.ArrayBuffer
   * @author [[https://github.com/rlorcac Raimundo Lorca C.]]
   */
 trait Panel {
+  /** An identifier for the panel.
+   *
+   * @return A string to be used as an identifier for the panel.
+   */
+  def name: String
   def getWildUnit: Option[WildUnit]
-
 
   /** Array of the characters currently positioned on this panel.
    *
@@ -71,4 +75,5 @@ trait Panel {
    * @param panel a `Panel` to remove from this `Panel`'s `nextPanels`
    */
   def removeNextPanel(panel: Panel): Unit
+
 }

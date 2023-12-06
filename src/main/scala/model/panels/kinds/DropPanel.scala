@@ -7,7 +7,7 @@ import model.panels.AbstractPanel
 /** Represents a panel where players lose stars upon landing.
  *
  */
-class DropPanel extends AbstractPanel {
+class DropPanel(id: Int = 0) extends AbstractPanel(id, "Drop Panel"){
   /** To be called when a `PlayerCharacter` lands on a `Panel`
    *
    * @param player The `PlayerCharacter` that landed on the `Panel`
