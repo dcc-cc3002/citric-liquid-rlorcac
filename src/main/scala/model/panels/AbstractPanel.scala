@@ -8,9 +8,10 @@ import scala.collection.mutable.ArrayBuffer
 /** Implements general features of a panel
  *
  */
-abstract class AbstractPanel extends Panel{
+abstract class AbstractPanel(private val id: Int, private val panelType: String) extends Panel{
   private val _characters: ArrayBuffer[Player] = new ArrayBuffer[Player]
   private val _nextPanels: ArrayBuffer[Panel] = new ArrayBuffer[Panel]
+
 
   override def characters: ArrayBuffer[Player] = _characters.clone() // TODO: this returns a clone of the list but elements are still the same (mutable)
 
@@ -18,6 +19,7 @@ abstract class AbstractPanel extends Panel{
 
   def addCharacter(player: Player): Unit = {
     _characters.append(player)
+    player.setPanel(this)
     activate(player)
   }
 
@@ -40,4 +42,6 @@ abstract class AbstractPanel extends Panel{
   }
 
   override def getWildUnit: Option[WildUnit] = None
+
+  override def name: String = panelType + " " + id.toString
 }
