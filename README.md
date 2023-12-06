@@ -29,3 +29,9 @@ contributions, the design decisions you've made, and any other information you d
 This project is licensed under the [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 ---
+
+## Final Submission Patchnotes
+
+- The game's model and controller are fully implemented. All that is yet to be implemented is the view. 
+- Some extra design patterns used were Factory Pattern and Composite Pattern (both used together for `RandomWildUnitFactory` and `RandomPanelFactory`, as each of these contains a collection of `Factory` for `WildUnit` and `Panel` types, respectively). 
+- The detection of game end was implemented using a modified version of the Observer pattern, where there is only one registered observer in `Player`, being the `GameController`.
