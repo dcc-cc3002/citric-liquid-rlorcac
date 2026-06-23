@@ -1,6 +1,7 @@
 package cl.uchile.dcc.citric
-package model
+package model.panels
 
+import model.entities.PlayerCharacter
 import scala.collection.mutable.ArrayBuffer
 
 /** Represents a single cell on a board, known as a Panel.
@@ -12,16 +13,18 @@ import scala.collection.mutable.ArrayBuffer
   * structures.
   *
   * @author [[https://github.com/r8vnhill Ignacio Slater M.]]
-  * @author [[https://github.com/YOUR-USERNAME YOUR NAME]]
+  * @author [[https://github.com/rlorcac Raimundo Lorca C.]]
   */
 trait Panel {
 
   /** Array of the characters currently positioned on this panel.
-    *
-    * In the game, multiple characters might be on the same panel at once, e.g., if multiple players
-    * land on the same space.
-    */
-  val characters: ArrayBuffer[PlayerCharacter]
+   *
+   * In the game, multiple characters might be on the same panel at once, e.g., if multiple players
+   * land on the same space.
+   *
+   * @return A list containing all players currently in the `Panel`
+   */
+  def characters: ArrayBuffer[PlayerCharacter]
 
   /** An array of panels that are directly connected to this one.
    *
@@ -30,7 +33,7 @@ trait Panel {
    *
    * @return a List of Panel instances that are adjacent or connected to this panel.
    */
-  var nextPanels: ArrayBuffer[Panel]
+  def nextPanels: ArrayBuffer[Panel]
 
   /** Adds a character to the list of characters currently on this panel.
     *
@@ -47,4 +50,22 @@ trait Panel {
     * @param player The player character to remove from this panel.
     */
   def removeCharacter(player: PlayerCharacter): Unit
+
+  /** To be called when a `PlayerCharacter` lands on a `Panel`
+   *
+   * @param player The `PlayerCharacter` that landed on the `Panel`
+   */
+  def activate(player: PlayerCharacter): Unit
+
+  /** Adds a `Panel` to `nextPanels`
+   *
+   * @param panel a `Panel` to add to this `Panel`'s `nextPanels`
+   */
+  def addNextPanel(panel: Panel): Unit
+
+  /** Removes a `Panel` from `nextPanels`
+   *
+   * @param panel a `Panel` to remove from this `Panel`'s `nextPanels`
+   */
+  def removeNextPanel(panel: Panel): Unit
 }
