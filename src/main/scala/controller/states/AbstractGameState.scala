@@ -1,0 +1,46 @@
+package cl.uchile.dcc.citric
+package controller.states
+
+import controller.GameController
+import exceptions.InvalidStateTransitionException
+import model.entities.{Player, WildUnit}
+
+/** An abstract representation of all possible logical states of the game.
+ *
+ * @param stateName A name for the state, used _exclusively_ for debugging.
+ * @param context The Game Controller this state is used in.
+ */
+abstract class AbstractGameState(protected val stateName: String,
+                                 protected val context: GameController
+                                ) extends GameState {
+
+  override def getStateName: String = stateName
+
+  private def invalidTransition(nextState: String) = throw new InvalidStateTransitionException(getStateName, nextState)
+
+  override def startGame(): Unit = invalidTransition("MainLoop")
+
+  override def newGame(): Unit = invalidTransition("PreGame")
+
+  override def startTurn(player: Player): Unit = invalidTransition("PlayerTurn")
+
+  override def endCombat(): Unit = invalidTransition("MainLoop")
+
+  override def startPlayerCombat(against: Player): Unit = invalidTransition("PlayerCombat")
+
+  override def startWildUnitCombat(wildUnit: WildUnit): Unit = invalidTransition("WildUnitCombat")
+
+  override def landOnPanel(): Unit = invalidTransition("PlayerPanel")
+
+  override def startRecovery(): Unit = invalidTransition("Recovery")
+
+  override def passRecovery(): Unit = invalidTransition("PlayerTurn")
+
+  override def failRecovery(): Unit = invalidTransition("MainLoop")
+
+  override def rollDie(): Unit = invalidTransition("PlayerMovement")
+
+  override def endTurn(): Unit = invalidTransition("MainLoop")
+
+  override def combatRound(): Unit = invalidTransition("CombatRound")
+}
