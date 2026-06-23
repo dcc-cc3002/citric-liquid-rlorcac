@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model
+package model.entities
 
 import scala.util.Random
 
@@ -35,17 +35,61 @@ import scala.util.Random
   * @author [[https://github.com/joelriquelme/ Joel Riquelme P.]]
   * @author [[https://github.com/r8vnhill/ Ignacio Slater M.]]
   * @author [[https://github.com/Seivier/ Vicente González B.]]
-  * @author [[https://github.com/~Your github account~/ ~Your Name~]]
+  * @author [[https://github.com/rlorcac/ Raimundo Lorca C.]]
   */
 class PlayerCharacter(val name: String,
-              val maxHp: Int,
-              val attack: Int,
-              val defense: Int,
-              val evasion: Int,
-              val randomNumberGenerator: Random = new Random()) {
+              maxHp: Int,
+              attack: Int,
+              defense: Int,
+              evasion: Int,
+              val randomNumberGenerator: Random = new Random()) extends AbstractEntity(maxHp, attack, defense, evasion) {
+  var stars: Int = 0
+  private var norma: Int = 1
+  var victories: Int = 0
+  var alive: Boolean = true
+  var goal: (String, Int) = _
+  setGoal() // Immediately calls setGoal() to set goal for next Norma level
 
   /** Rolls a dice and returns a value between 1 to 6. */
   def rollDice(): Int = {
     randomNumberGenerator.nextInt(6) + 1
   }
+
+  /** Called when the unit starts its turn
+   *
+   */
+  def startTurn(): Unit = {
+    // TODO: Add star addition logic.
+  }
+
+  def getNorma: Int = norma
+
+  /** Handles logic for checking if Norma Clear can be executed
+   *
+   */
+  def normaCheck(): Unit = {
+    var normaMap: Map[String, Int] = Map[String, Int]("Victories" -> victories, "Stars" -> stars)
+    var goalCount: Int = goal[1]
+    if(normaMap(goal[0]) >= goalCount){
+      normaClear()
+    }
+  }
+
+  /** Invoked only if the player can Norma Clear, increments `norma` by 1 and asks to set goal for next Norma level.
+   *
+   */
+  private def normaClear(): Unit = {
+    norma += 1
+    setGoal()
+  }
+
+  /** Asks the player to choose a goal for next Norma level.
+   *
+   */
+  private def setGoal(): Unit = {
+    var default: (String, Int) = ("Victories", 1)
+    // TODO: Add goal-setting logic.
+    goal = default
+  }
+
 }
